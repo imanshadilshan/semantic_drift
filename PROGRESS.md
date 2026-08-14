@@ -4,7 +4,7 @@ Overall status for the semantic-drift research project. Following the 30-day tim
 [`Research Proposal/research_proposal_semantic_drift.md`](Research%20Proposal/research_proposal_semantic_drift.md) (Section 8), worked in order rather than jumping straight to code.
 For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation/PROGRESS.md).
 
-## Status: Days 1-9 complete (dataset fully built)
+## Status: Days 1-13 complete on the code side; Colab run is the user's next action
 
 ## Done
 - **Repo structure**: `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/` (gitignored PDFs), `Implementation/`, `Final Paper/`.
@@ -19,8 +19,11 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 - **Day 6-9 — Dataset download**: 60 COCO val2017 images downloaded into `Implementation/data/raw_images/` via `scripts/download_coco_subset.py`, with a manifest (`data/coco_subset_manifest.json`) of each image's object categories.
 - **Day 6-9 — Edit instructions**: every image individually viewed and given a custom Chain A (object-level, 4 steps) and Chain B (global, 4 steps) in `data/edit_instructions.json` — 120 chains total, verified complete against the manifest. Dataset construction is done.
 
+- **Day 10-13 — GPU code written**: `Implementation/src/edit_runner.py` (InstructPix2Pix), `src/segment.py` (SAM), and `src/data_loader.py` implemented, with `notebooks/colab_run_pipeline.ipynb` rewritten to actually run the baseline chains and save results. None of this has executed yet — no GPU on this machine — so it's unverified until it runs on Colab.
+
 ## Next
-- **Day 10-13**: `edit_runner.py` (InstructPix2Pix) + `segment.py` (SAM) on Colab GPU, then run baseline edit chains over the full dataset.
+- **You**: run `Implementation/notebooks/colab_run_pipeline.ipynb` on Google Colab (T4 GPU) — see the notebook's top cell for how to get the project + dataset onto Colab (zip upload, since raw_images/ is gitignored). Expect first-run debugging since this GPU code hasn't been tested against the real models yet.
+- **Day 14-15** (after that): drift-scoring pass over the saved baseline outputs.
 
 ## Blockers
 - None.

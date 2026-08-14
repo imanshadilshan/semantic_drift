@@ -16,8 +16,12 @@
 
 - **Day 6-9 — Edit instructions**: `data/edit_instructions.json` fully populated — every one of the 60 images actually viewed (via Read, not inferred from category labels alone) and given a custom 4-step Chain A (object-level) and 4-step Chain B (global), 120 chains total. Verified against the manifest: 0 missing images, 60 object_level + 60 global, all chains length 4.
 
+- **Day 10-13 — Model wrappers**: `src/edit_runner.py` (InstructPix2Pix, `diffusers` pipeline) and `src/segment.py` (SAM, `segment_anything` package) implemented — both lazy-load their models on first call so importing them doesn't require a GPU. `src/data_loader.py` also implemented (`load_edit_chains()`, `load_image()`) with 2 new unit tests (12/12 total passing). **Not yet run** — no GPU on this machine, so this code is unverified against the real models until it runs on Colab.
+- **Day 10-13 — Colab notebook**: `notebooks/colab_run_pipeline.ipynb` rewritten into a real, runnable pipeline: installs deps, unzips the uploaded project (raw_images/ and edit_instructions.json are gitignored so must be uploaded directly, not cloned), loads the dataset, runs a SAM smoke test, then runs all 120 baseline edit chains (resizing to 512x512, saving every step to `results/baseline/`, skip-if-done so it survives a disconnect).
+
 ## Next
-- **Day 10-13**: implement `src/edit_runner.py` (InstructPix2Pix wrapper) and `src/segment.py` (SAM wrapper) on Colab GPU, then run full baseline edit chains over the dataset.
+- **You**: zip `Implementation/`, open the notebook in Google Colab (T4 GPU runtime), upload the zip, and run it top to bottom. This is a real run against real models — expect it to take a while (120 chains x ~4 steps) and to need debugging on first run since none of this GPU code has executed yet.
+- **Day 14-15** (after the Colab run): implement the drift-scoring pass over the saved baseline outputs using `drift_score.py` + `segment.py`, and spot-check scores by eye before trusting the full batch.
 
 ## Decisions / notes
 - Implementation code lives in `Implementation/` (sibling to `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/`, `Final Paper/`), not at the repo root.
