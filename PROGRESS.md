@@ -22,7 +22,7 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 - **Day 10-13 — GPU code written**: `Implementation/src/edit_runner.py` (InstructPix2Pix), `src/segment.py` (SAM), and `src/data_loader.py` implemented, with `notebooks/colab_run_pipeline.ipynb` rewritten to actually run the baseline chains and save results. None of this has executed yet — no GPU on this machine — so it's unverified until it runs on Colab.
 
 ## Next
-- **You**: run `Implementation/notebooks/colab_run_pipeline.ipynb` on Google Colab (T4 GPU) — see the notebook's top cell for how to get the project + dataset onto Colab (zip upload, since raw_images/ is gitignored). Expect first-run debugging since this GPU code hasn't been tested against the real models yet.
+- **You**: make the GitHub repo (`imanshadilshan/semantic_drift`) public, then run `Implementation/notebooks/colab_run_pipeline.ipynb` on Google Colab (T4 GPU) — it now clones the repo directly (dataset images are committed to git, no manual upload needed). Expect first-run debugging since this GPU code hasn't been tested against the real models yet.
 - **Day 14-15** (after that): drift-scoring pass over the saved baseline outputs.
 
 ## Blockers
