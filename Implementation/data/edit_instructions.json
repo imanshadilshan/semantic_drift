@@ -1,20 +1,1202 @@
 [
   {
-    "image_id": "example_0001",
+    "image_id": "000000530470.jpg",
     "chain_type": "object_level",
     "instructions": [
-      "add a bird",
-      "remove the fence",
-      "change the dog's collar color"
+      "change the orange truck to a red truck",
+      "add a bicycle parked next to the truck",
+      "remove the yellow kite from the sky",
+      "add a dog running on the grass near the trees"
     ]
   },
   {
-    "image_id": "example_0002",
+    "image_id": "000000530470.jpg",
     "chain_type": "global",
     "instructions": [
-      "make it sunset",
-      "add fog",
-      "make it look like winter"
+      "make it a sunny day",
+      "add autumn colors to the trees",
+      "make it look like sunset",
+      "add light snow falling"
+    ]
+  },
+  {
+    "image_id": "000000157807.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the cat's fur color to orange and white",
+      "put a small bow on the cat's head",
+      "add a bath towel hanging on the wall",
+      "remove the cat's tail"
+    ]
+  },
+  {
+    "image_id": "000000157807.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the bathroom tiles blue",
+      "make the lighting warmer, like evening light",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph"
+    ]
+  },
+  {
+    "image_id": "000000260106.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the horse's color to black",
+      "change the rider's helmet to red",
+      "add a number bib on the rider's back",
+      "remove the striped poles in front of the horse"
+    ]
+  },
+  {
+    "image_id": "000000260106.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like early morning with fog",
+      "turn the grass field brown like autumn",
+      "make it look like a painting"
+    ]
+  },
+  {
+    "image_id": "000000376278.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "add a small bird standing next to the zebra",
+      "change the zebra's stripes to a lighter shade",
+      "remove the second zebra visible on the right edge",
+      "add a tree in the background"
+    ]
+  },
+  {
+    "image_id": "000000376278.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy overcast day",
+      "add golden sunset lighting",
+      "turn the ground green with grass",
+      "make it look like a winter scene with light snow"
+    ]
+  },
+  {
+    "image_id": "000000547144.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the laptop's color to red",
+      "add a coffee mug next to the keyboard",
+      "remove the mouse next to the right monitor",
+      "change the desktop wallpaper on the CRT monitor to a photo of mountains"
+    ]
+  },
+  {
+    "image_id": "000000547144.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting dimmer, like night time",
+      "make the whole scene look retro, like an old photograph",
+      "add warm sunset light coming through a window",
+      "make it look like a sketch drawing"
+    ]
+  },
+  {
+    "image_id": "000000290081.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the oranges to apples",
+      "change the bowl color to red",
+      "add a banana on top of the fruit",
+      "remove one orange from the bowl"
+    ]
+  },
+  {
+    "image_id": "000000290081.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting brighter and more golden",
+      "make it look like it's nighttime outside the window",
+      "turn the photo into a watercolor painting",
+      "add a warm, cozy autumn atmosphere"
+    ]
+  },
+  {
+    "image_id": "000000365207.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the red car to a blue car",
+      "add a hat on the dog",
+      "change the dog's fur color to white",
+      "remove the black car in the background"
+    ]
+  },
+  {
+    "image_id": "000000365207.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like sunset lighting",
+      "turn the scene into winter with snow on the ground",
+      "make the photo look like an old film photograph"
+    ]
+  },
+  {
+    "image_id": "000000370900.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the left teddy bear's ribbon to blue",
+      "remove the tiara from the middle bear",
+      "add a bow tie to the bear on the right",
+      "change the bears' fur color to light brown"
+    ]
+  },
+  {
+    "image_id": "000000370900.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting purple and dreamy",
+      "add sparkles in the background",
+      "make it look like a vintage photograph",
+      "turn the background into a starry night sky"
+    ]
+  },
+  {
+    "image_id": "000000015440.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the stop sign to a yield sign",
+      "add a bicycle leaning against the pole",
+      "remove the fence behind the stop sign",
+      "change the bus color to yellow"
+    ]
+  },
+  {
+    "image_id": "000000015440.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it look like nighttime",
+      "add rain falling on the street",
+      "make it a snowy winter scene",
+      "make the lighting look like early morning"
+    ]
+  },
+  {
+    "image_id": "000000376365.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the vase color to red",
+      "add more leaves to the plant",
+      "change the candle color to blue",
+      "remove the candle glass next to the vase"
+    ]
+  },
+  {
+    "image_id": "000000376365.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting darker, like evening",
+      "add warm sunset light through the window",
+      "turn the photo into a black and white photo",
+      "make it look like a painting"
+    ]
+  },
+  {
+    "image_id": "000000362716.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the player's shirt color to blue",
+      "change the tennis racket's string color to red",
+      "remove the white cap",
+      "add a wristband on his other wrist"
+    ]
+  },
+  {
+    "image_id": "000000362716.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it look like nighttime under stadium lights",
+      "make it a rainy match",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000414170.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the front skier's jacket to red",
+      "remove the second skier from the trail",
+      "add a dog running beside the front skier",
+      "change the trees to autumn colors"
+    ]
+  },
+  {
+    "image_id": "000000414170.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a heavy snowstorm",
+      "make it look like sunset lighting through the trees",
+      "turn the photo into a black and white photo",
+      "make it look like early morning fog"
+    ]
+  },
+  {
+    "image_id": "000000521719.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the ladybug kite to a butterfly kite",
+      "remove the striped kite on the left",
+      "add a price tag to the frog kite",
+      "change the wooden post color to green"
+    ]
+  },
+  {
+    "image_id": "000000521719.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy overcast day",
+      "make it nighttime with string lights",
+      "turn the photo into a watercolor painting",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000428218.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the frisbee color to orange",
+      "change the man's shirt to red",
+      "remove the fence in the background",
+      "add a dog jumping to catch the frisbee"
+    ]
+  },
+  {
+    "image_id": "000000428218.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like autumn with fallen leaves",
+      "make it look like early morning fog",
+      "turn the photo into a black and white photo"
+    ]
+  },
+  {
+    "image_id": "000000094336.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the cat's fur to solid black",
+      "add water dripping from the faucet",
+      "add a small towel next to the sink",
+      "remove the cat's whiskers"
+    ]
+  },
+  {
+    "image_id": "000000094336.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting cooler, like daylight",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make the bathroom look brighter and more modern"
+    ]
+  },
+  {
+    "image_id": "000000384670.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the yellow shirt to blue",
+      "change the tennis racket's grip color to red",
+      "remove the second player bending down",
+      "add a tennis ball on the ground"
+    ]
+  },
+  {
+    "image_id": "000000384670.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it look like a night match under stadium lights",
+      "make it a rainy match",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000021903.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the man's shirt to blue",
+      "change the elephant's skin tone to a lighter gray",
+      "remove the second person on the right",
+      "add a hat on the man"
+    ]
+  },
+  {
+    "image_id": "000000021903.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like early morning mist",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting through the trees"
+    ]
+  },
+  {
+    "image_id": "000000507575.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the laptop's wallpaper to a mountain photo",
+      "remove the printer from the desk",
+      "add a coffee mug next to the keyboard",
+      "change the monitor's wallpaper to a purple nebula"
+    ]
+  },
+  {
+    "image_id": "000000507575.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting dimmer, like night time",
+      "make the whole scene look retro, like an old photograph",
+      "add warm sunset light coming through a window",
+      "make it look like a sketch drawing"
+    ]
+  },
+  {
+    "image_id": "000000320642.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the woman in black's dress to red",
+      "remove the necklace she's wearing",
+      "add sunglasses on the woman in gray",
+      "change the neon sign's color to blue"
+    ]
+  },
+  {
+    "image_id": "000000320642.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it look like a party with colorful lights",
+      "make it nighttime outside the window",
+      "turn the photo into a black and white photo",
+      "add a warm, festive atmosphere"
+    ]
+  },
+  {
+    "image_id": "000000034760.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the shower curtain to red and white stripes",
+      "remove the cleaning spray cans from the counter",
+      "add a bath mat in front of the tub",
+      "change the toilet lid color to black"
+    ]
+  },
+  {
+    "image_id": "000000034760.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like evening light",
+      "make the bathroom tiles blue",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph"
+    ]
+  },
+  {
+    "image_id": "000000110638.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the baby elephant's skin tone to lighter gray",
+      "add a small bird sitting on one of the adult elephant's backs",
+      "remove the rock in the foreground",
+      "add a puddle of water on the sand"
+    ]
+  },
+  {
+    "image_id": "000000110638.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like early morning fog",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000174231.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the cat's fur to solid black",
+      "change the laptop's color to silver",
+      "remove the black chair",
+      "add a coffee mug on the table"
+    ]
+  },
+  {
+    "image_id": "000000174231.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting warmer, like evening light",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make the wall color light blue"
+    ]
+  },
+  {
+    "image_id": "000000164883.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the man's shirt to red",
+      "change the TV avatar's hair color to blonde",
+      "remove the \"Quit\" button text",
+      "add glasses on the man"
+    ]
+  },
+  {
+    "image_id": "000000164883.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting dimmer, like night time",
+      "make the whole scene look retro, like an old photograph",
+      "add colorful party lighting",
+      "turn the photo into a black and white photo"
+    ]
+  },
+  {
+    "image_id": "000000205333.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the front skier's jacket to blue",
+      "remove the second skier in the distance",
+      "add a flag marker on the ski pole",
+      "add a dog standing next to the skier"
+    ]
+  },
+  {
+    "image_id": "000000205333.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a clear sunny day",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add heavy falling snow"
+    ]
+  },
+  {
+    "image_id": "000000175251.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the toothbrush color to blue",
+      "add a rubber duck on the bathtub edge",
+      "remove the clothes hanging in the background",
+      "add a small towel around the child's shoulders"
+    ]
+  },
+  {
+    "image_id": "000000175251.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like morning light",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make the bathroom tiles blue"
+    ]
+  },
+  {
+    "image_id": "000000002532.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the skier's jacket color to red",
+      "remove the tree on the right",
+      "add a second skier next to them",
+      "add a backpack on the skier"
+    ]
+  },
+  {
+    "image_id": "000000002532.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it an overcast cloudy day",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add heavy falling snow"
+    ]
+  },
+  {
+    "image_id": "000000201072.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the player's outfit to blue",
+      "change the tennis racket's strings to red",
+      "remove the spectators in the background",
+      "add a wristband on his left wrist"
+    ]
+  },
+  {
+    "image_id": "000000201072.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it look like a night match under stadium lights",
+      "make it a rainy match",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000063047.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the man's shirt to a solid red shirt",
+      "remove his glasses",
+      "add a baseball cap on his head",
+      "change the paper bag to a blue bag"
+    ]
+  },
+  {
+    "image_id": "000000063047.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like evening with warm lighting",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph"
+    ]
+  },
+  {
+    "image_id": "000000139077.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the child's shirt to blue",
+      "remove the stack of pillows on the cabinet",
+      "add a soccer ball on the floor",
+      "change the TV game's background color to purple"
+    ]
+  },
+  {
+    "image_id": "000000139077.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting dimmer, like evening",
+      "make the whole scene look retro, like an old photograph",
+      "add warm sunset light through the window on the left",
+      "turn the photo into a black and white photo"
+    ]
+  },
+  {
+    "image_id": "000000402473.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the black and white cat's fur to solid orange",
+      "add a collar with a bell on the tabby cat",
+      "remove the black and white cat",
+      "add a bow tie on the tabby cat"
+    ]
+  },
+  {
+    "image_id": "000000402473.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the background light blue",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "add warm golden lighting"
+    ]
+  },
+  {
+    "image_id": "000000079014.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the orange to an apple",
+      "remove the man's glasses",
+      "add a hat on the man",
+      "change his shirt color to blue"
+    ]
+  },
+  {
+    "image_id": "000000079014.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000138954.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the peach slices to orange slices",
+      "remove the cucumber slices",
+      "add a lemon wedge on the plate",
+      "change the plate color to blue"
+    ]
+  },
+  {
+    "image_id": "000000138954.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting brighter and more golden",
+      "turn the photo into a black and white photo",
+      "make it look like a painting",
+      "add a warm, cozy atmosphere"
+    ]
+  },
+  {
+    "image_id": "000000384808.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the man's shirt to solid black",
+      "remove the cleaning bottles on the counter",
+      "add a plant on the sink counter",
+      "change the towel color to blue"
+    ]
+  },
+  {
+    "image_id": "000000384808.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like evening light",
+      "make the bathroom tiles blue",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph"
+    ]
+  },
+  {
+    "image_id": "000000457559.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the red team's jersey to yellow",
+      "change the ball to an orange ball",
+      "remove the \"4th official\" sign",
+      "add a goalpost in the background"
+    ]
+  },
+  {
+    "image_id": "000000457559.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy match",
+      "make it look like night under stadium lights",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000407943.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the umbrella's fabric to gold color",
+      "add a hat on the silhouette",
+      "remove the lights in the background",
+      "add a second umbrella beside it"
+    ]
+  },
+  {
+    "image_id": "000000407943.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the whole photo colorful instead of black and white",
+      "make it look like a concert with colorful lights",
+      "turn the photo into a warm sepia tone",
+      "make it look like a painting"
+    ]
+  },
+  {
+    "image_id": "000000579635.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the surfboard color to yellow",
+      "remove the sailboat on the horizon",
+      "add a dolphin jumping near the surfer",
+      "change the surfer's wetsuit color to blue"
+    ]
+  },
+  {
+    "image_id": "000000579635.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a cloudy overcast day",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add a stormy, dramatic sky"
+    ]
+  },
+  {
+    "image_id": "000000125806.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change one cow's fur color to brown",
+      "remove the wooden fence post",
+      "add a bell around one cow's neck",
+      "add a bird sitting on the fence"
+    ]
+  },
+  {
+    "image_id": "000000125806.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a snowy winter scene",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add morning fog"
+    ]
+  },
+  {
+    "image_id": "000000314294.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the elephant's skin tone to a lighter gray",
+      "remove the second elephant in the background",
+      "add a bird perched on the rock",
+      "add tusks to the elephant"
+    ]
+  },
+  {
+    "image_id": "000000314294.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like golden sunset lighting",
+      "turn the photo into a black and white photo",
+      "add early morning fog"
+    ]
+  },
+  {
+    "image_id": "000000426241.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the monitor's displayed image to a nature scene",
+      "remove the printer on the left",
+      "add a coffee mug on the desk",
+      "change the keyboard color to white"
+    ]
+  },
+  {
+    "image_id": "000000426241.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting dimmer, like night time",
+      "make the whole scene look retro, like an old photograph",
+      "add warm sunset light through a window",
+      "make it look like a sketch drawing"
+    ]
+  },
+  {
+    "image_id": "000000576566.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the skateboarder's shirt to blue",
+      "remove the ramp on the ground",
+      "add a helmet on the skateboarder",
+      "change the skateboard's wheels to red"
+    ]
+  },
+  {
+    "image_id": "000000576566.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a sunny clear day",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add rain falling"
+    ]
+  },
+  {
+    "image_id": "000000449909.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the boy's jacket to black",
+      "change the giraffe's spot pattern to darker brown",
+      "remove the rocks in the foreground",
+      "add a second giraffe standing behind the first"
+    ]
+  },
+  {
+    "image_id": "000000449909.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like golden sunset lighting",
+      "turn the photo into a black and white photo",
+      "add early morning fog"
+    ]
+  },
+  {
+    "image_id": "000000311928.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the boy's cap to red",
+      "change the ball color to orange",
+      "remove the tall grass in the background",
+      "add a baseball glove on the ground"
+    ]
+  },
+  {
+    "image_id": "000000311928.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it an overcast cloudy day",
+      "make it look like golden sunset lighting",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph"
+    ]
+  },
+  {
+    "image_id": "000000530466.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the red graffiti letters to blue",
+      "remove the purple graffiti on the right",
+      "add a window reflection of trees",
+      "change the train's base color to green"
+    ]
+  },
+  {
+    "image_id": "000000530466.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it nighttime",
+      "make it a rainy day",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000172649.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the skateboarder's shirt to blue",
+      "change the ramp color to orange",
+      "remove the skateboard from his feet",
+      "add a helmet on the skateboarder"
+    ]
+  },
+  {
+    "image_id": "000000172649.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a cloudy overcast day",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add rain falling"
+    ]
+  },
+  {
+    "image_id": "000000136033.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the wall color to blue",
+      "remove the soap dispensers",
+      "add a towel hanging next to the mirror",
+      "change the potted plant to a flowering plant"
+    ]
+  },
+  {
+    "image_id": "000000136033.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting brighter and cooler",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "add warm golden lighting"
+    ]
+  },
+  {
+    "image_id": "000000038678.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the woman's shirt to blue",
+      "change the bagel to a croissant",
+      "remove the man in red in the background",
+      "add a napkin next to the plate"
+    ]
+  },
+  {
+    "image_id": "000000038678.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like golden hour",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make it look like a rainy day outside the window"
+    ]
+  },
+  {
+    "image_id": "000000546475.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the man's shirt to blue",
+      "remove his watch",
+      "add a hat on the baby",
+      "change the baby's outfit color to pink"
+    ]
+  },
+  {
+    "image_id": "000000546475.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like golden hour",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make the room look brighter"
+    ]
+  },
+  {
+    "image_id": "000000179112.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change her top to a blue top",
+      "remove the tattoo on her arm",
+      "add sunglasses on her head",
+      "change the phone color to white"
+    ]
+  },
+  {
+    "image_id": "000000179112.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like golden hour",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make the wall color light blue"
+    ]
+  },
+  {
+    "image_id": "000000001503.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the desk color to dark wood",
+      "remove the mouse next to the keyboard",
+      "add a coffee mug on the desk",
+      "change the monitor's screen content to a photo of a beach"
+    ]
+  },
+  {
+    "image_id": "000000001503.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting dimmer, like night time",
+      "make the whole scene look retro, like an old photograph",
+      "add warm sunset light through the blinds",
+      "make it look like a sketch drawing"
+    ]
+  },
+  {
+    "image_id": "000000273760.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change his outfit to red",
+      "change the tennis racket's strings to yellow",
+      "remove the headband",
+      "add a wristband on his other wrist"
+    ]
+  },
+  {
+    "image_id": "000000273760.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it look like a night match under stadium lights",
+      "make it a rainy match",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000206579.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the cake's frosting color to blue",
+      "remove the lit candles",
+      "add a stack of birthday presents on the table",
+      "change the man's shirt to red"
+    ]
+  },
+  {
+    "image_id": "000000206579.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the room lighting brighter",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "add warm golden lighting"
+    ]
+  },
+  {
+    "image_id": "000000447187.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the batter's jersey to blue",
+      "change the catcher's gear to red",
+      "remove the umpire",
+      "add a scoreboard in the background"
+    ]
+  },
+  {
+    "image_id": "000000447187.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a night game under stadium lights",
+      "make it a rainy game",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000154339.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the gauge needle color to white",
+      "remove the smaller gauge on the right",
+      "add rust texture on the pipes",
+      "change the lighting color to green"
+    ]
+  },
+  {
+    "image_id": "000000154339.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it daylight instead of dark",
+      "turn the photo into a black and white photo",
+      "make it look like a painting",
+      "add a warm, cozy atmosphere"
+    ]
+  },
+  {
+    "image_id": "000000168337.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the fire hydrant color to yellow",
+      "change the woman's coat to blue",
+      "remove the \"STAR\" sign",
+      "add a bicycle leaning against the building"
+    ]
+  },
+  {
+    "image_id": "000000168337.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a rainy day",
+      "make it look like nighttime",
+      "turn the photo into a black and white photo",
+      "add golden sunset lighting"
+    ]
+  },
+  {
+    "image_id": "000000460929.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the hot dog bun color to darker brown",
+      "change the soda bottle to a red bottle",
+      "remove the foil wrapping",
+      "add ketchup on the hot dog"
+    ]
+  },
+  {
+    "image_id": "000000460929.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting brighter and warmer",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "make it look like a rainy day outside"
+    ]
+  },
+  {
+    "image_id": "000000407298.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the boy's shirt to red",
+      "change the baseball to a softer yellow softball",
+      "remove the stitching detail text on the glove",
+      "add a cap on the boy's head"
+    ]
+  },
+  {
+    "image_id": "000000407298.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it an overcast cloudy day",
+      "make it look like golden sunset lighting",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph"
+    ]
+  },
+  {
+    "image_id": "000000526197.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the middle donut's glaze to chocolate",
+      "remove the passion fruit donut on the left",
+      "add a fourth donut plate",
+      "change the price signs' text color to red"
+    ]
+  },
+  {
+    "image_id": "000000526197.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the lighting warmer, like golden hour",
+      "turn the photo into a black and white photo",
+      "make it look like an old vintage photograph",
+      "add a cozy, cafe atmosphere"
+    ]
+  },
+  {
+    "image_id": "000000482735.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the surfer's wetsuit color to blue",
+      "remove the whitewash foam spray",
+      "add a seagull flying above",
+      "change the surfboard color to yellow"
+    ]
+  },
+  {
+    "image_id": "000000482735.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a cloudy overcast day",
+      "make it look like sunrise lighting",
+      "turn the photo into a black and white photo",
+      "add a stormy, dramatic sky"
+    ]
+  },
+  {
+    "image_id": "000000274219.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the bow tie to a striped tie",
+      "remove the mustache",
+      "add glasses on the man",
+      "change his hair color to darker"
+    ]
+  },
+  {
+    "image_id": "000000274219.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make the whole photo colorful instead of black and white",
+      "turn the photo into a warm sepia tone",
+      "make it look like a modern photograph",
+      "add a blurred background"
+    ]
+  },
+  {
+    "image_id": "000000270122.jpg",
+    "chain_type": "object_level",
+    "instructions": [
+      "change the surfer's outfit color to red",
+      "remove the watermark text",
+      "add a second surfer in the background",
+      "change the surfboard color to orange"
+    ]
+  },
+  {
+    "image_id": "000000270122.jpg",
+    "chain_type": "global",
+    "instructions": [
+      "make it a sunny clear day",
+      "make it look like sunset lighting",
+      "turn the photo into a black and white photo",
+      "add a stormy, dramatic sky"
     ]
   }
 ]
