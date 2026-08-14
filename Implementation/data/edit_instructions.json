@@ -1,0 +1,20 @@
+[
+  {
+    "image_id": "example_0001",
+    "chain_type": "object_level",
+    "instructions": [
+      "add a bird",
+      "remove the fence",
+      "change the dog's collar color"
+    ]
+  },
+  {
+    "image_id": "example_0002",
+    "chain_type": "global",
+    "instructions": [
+      "make it sunset",
+      "add fog",
+      "make it look like winter"
+    ]
+  }
+]

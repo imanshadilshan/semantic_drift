@@ -1,0 +1,12 @@
+torch
+torchvision
+diffusers
+transformers
+segment-anything
+scipy
+opencv-python
+numpy
+pandas
+matplotlib
+pyyaml
+pytest

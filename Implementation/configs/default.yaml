@@ -1,0 +1,20 @@
+seed: 42
+
+paths:
+  raw_images: data/raw_images
+  edit_instructions: data/edit_instructions.json
+  results_baseline: results/baseline
+  results_mitigated: results/mitigated
+
+models:
+  editor_checkpoint: timbrooks/instruct-pix2pix
+  clip_checkpoint: openai/clip-vit-base-patch32
+  sam_checkpoint: vit_b
+
+chains:
+  min_steps: 4
+  max_steps: 5
+  types: [object_level, global]
+
+mitigation:
+  strategies: [masked_conditioning, region_locking]
