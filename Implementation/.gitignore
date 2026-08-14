@@ -5,8 +5,9 @@ __pycache__/
 venv/
 
 data/.cache/
-data/raw_images/*
-!data/raw_images/.gitkeep
+
+# raw_images/ is intentionally NOT ignored: the ~60 COCO images (~8.6MB) are committed
+# so Colab can `git clone` the full dataset instead of needing a manual zip upload.
 
 results/baseline/*
 !results/baseline/.gitkeep
