@@ -20,10 +20,10 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 - **Day 6-9 — Edit instructions**: every image individually viewed and given a custom Chain A (object-level, 4 steps) and Chain B (global, 4 steps) in `data/edit_instructions.json` — 120 chains total, verified complete against the manifest. Dataset construction is done.
 
 - **Day 10-13 — GPU code written and run**: `Implementation/src/edit_runner.py` (InstructPix2Pix), `src/segment.py` (SAM), `src/data_loader.py` implemented and run successfully on Colab GPU. All 120 baseline chains (60 images × Chain A + Chain B, 4 steps each) generated and downloaded — verified complete locally, now committed to git along with the source images.
-- **Day 14-15 — Drift scoring**: `src/clip_embed.py` added and a real bug fixed (transformers 5.x changed CLIP's output format — see `Implementation/PROGRESS.md` for detail). `scripts/compute_baseline_drift.py` written and smoke-tested successfully on one chain, but at ~178s/chain it's too slow for the laptop (~6hrs for all 120) — added to the Colab notebook to run on GPU instead.
+- **Day 14-15 — Drift scoring**: `src/clip_embed.py` added and a real bug fixed (transformers 5.x changed CLIP's output format). First real Colab run crashed at chain 16/120 on a sparse-region edge case and lost all progress since the script only saved at the very end — fixed to write incrementally and skip already-scored chains on resume, verified locally with mocked failure injection. See `Implementation/PROGRESS.md` for full detail.
 
 ## Next
-- **You**: run the new "Compute Drift Scores" cells in `notebooks/colab_run_pipeline.ipynb` on Colab, download `results/baseline_drift_scores.csv`.
+- **You**: re-run the "Compute Drift Scores" cell in `notebooks/colab_run_pipeline.ipynb` on Colab (git pull picks up the fix), download `results/baseline_drift_scores.csv`.
 - **Day 16-19** (after that): masked-conditioning + region-locking mitigations, compared against this baseline.
 
 ## Blockers

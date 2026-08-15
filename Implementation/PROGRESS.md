@@ -1,6 +1,6 @@
 # Progress
 
-## Status: Days 1-13 code done and run (edit chains generated on Colab GPU); Day 14-15 drift-scoring code written, running on Colab now
+## Status: Days 1-13 code done and run (edit chains generated on Colab GPU); Day 14-15 drift-scoring code fixed for resilience, re-running on Colab now
 
 ## Done
 - Repo scaffolding: folder structure under `Implementation/` (src, tests, data, configs, notebooks, results, human_eval).
@@ -24,9 +24,11 @@
   - **Bug found and fixed during smoke test**: `transformers` 5.x changed `CLIPModel.get_image_features()`/`get_text_features()` to return a `BaseModelOutputWithPooling` instead of a plain tensor — the real 512-dim embedding is in `.pooler_output`, not the return value itself. Verified the fix with a synthetic red/blue image vs. text test (correct image matched correct text: 0.31 vs 0.24 similarity).
   - **Known limitation, not a bug**: `identify_target_regions()` matches instruction text against *pre-edit* regions, so it works well for "remove X" / "change X" instructions but has no strong match for "add X" instructions (the new object doesn't exist pre-edit) — meaning "add" steps will show somewhat inflated drift, since the newly-added (legitimately requested) content isn't excluded as a target region. Worth a sentence in the write-up's Limitations section.
   - Single-chain smoke test passed with plausible scores (~0.06/step). **CPU speed is the blocker**: ~178s/chain measured locally → ~6 hours for all 120, so this needs to run on Colab GPU, not the laptop.
+  - **Real run on Colab (first attempt) crashed at chain 16/120** with `ValueError: No non-target regions available to score drift over` — for one image (teddy bears, global chain) after a heavy stylization step, SAM found too few regions in the pre-image for anything to be left over once the target region was excluded. First 15 chains scored fine (plausible values, e.g. cumulative 0.10-0.49 range) before the crash.
+  - **Two resilience bugs fixed as a result**: (1) `main()` only wrote the CSV once at the very end, so the crash lost all 15 already-scored chains' work — now writes incrementally, one chain at a time, via `append_rows()`. (2) A single unscoreable step now gets caught, recorded as `None` in the CSV, and the chain continues (rather than the whole 120-chain run dying on one problem image) — `compute_chain_drift_score()` still runs on whichever steps *did* succeed. Also added skip-already-scored resume logic (`load_already_scored()`), so re-running after a crash doesn't repeat already-completed chains. Both fixes verified locally with mocked failure injection before pushing (full run is too slow on CPU to re-verify end-to-end locally).
 
 ## Next
-- **You**: run the two new notebook cells ("Compute Drift Scores") on Colab GPU, download `results/baseline_drift_scores.csv` when done.
+- **You**: re-run the "Compute Drift Scores" cell in Colab (git pull picks up the fix). The old script never wrote partial output, so this restarts from chain 1 — but now it survives sparse-region images instead of crashing, and if it does stop for any other reason, re-running will skip whatever chains already made it into the CSV. Download `results/baseline_drift_scores.csv` when done.
 - **Day 16-19** (after that): implement and run the masked-conditioning + region-locking mitigations, using the baseline scores as the comparison point.
 
 ## Decisions / notes
