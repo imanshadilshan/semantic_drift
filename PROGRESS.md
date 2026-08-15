@@ -4,7 +4,7 @@ Overall status for the semantic-drift research project. Following the 30-day tim
 [`Research Proposal/research_proposal_semantic_drift.md`](Research%20Proposal/research_proposal_semantic_drift.md) (Section 8), worked in order rather than jumping straight to code.
 For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation/PROGRESS.md).
 
-## Status: Days 1-13 complete on the code side; Colab run is the user's next action
+## Status: Days 1-13 complete and run on Colab GPU; Day 14-15 (drift scoring) written, running on Colab now
 
 ## Done
 - **Repo structure**: `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/` (gitignored PDFs), `Implementation/`, `Final Paper/`.
@@ -19,11 +19,12 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 - **Day 6-9 — Dataset download**: 60 COCO val2017 images downloaded into `Implementation/data/raw_images/` via `scripts/download_coco_subset.py`, with a manifest (`data/coco_subset_manifest.json`) of each image's object categories.
 - **Day 6-9 — Edit instructions**: every image individually viewed and given a custom Chain A (object-level, 4 steps) and Chain B (global, 4 steps) in `data/edit_instructions.json` — 120 chains total, verified complete against the manifest. Dataset construction is done.
 
-- **Day 10-13 — GPU code written**: `Implementation/src/edit_runner.py` (InstructPix2Pix), `src/segment.py` (SAM), and `src/data_loader.py` implemented, with `notebooks/colab_run_pipeline.ipynb` rewritten to actually run the baseline chains and save results. None of this has executed yet — no GPU on this machine — so it's unverified until it runs on Colab.
+- **Day 10-13 — GPU code written and run**: `Implementation/src/edit_runner.py` (InstructPix2Pix), `src/segment.py` (SAM), `src/data_loader.py` implemented and run successfully on Colab GPU. All 120 baseline chains (60 images × Chain A + Chain B, 4 steps each) generated and downloaded — verified complete locally, now committed to git along with the source images.
+- **Day 14-15 — Drift scoring**: `src/clip_embed.py` added and a real bug fixed (transformers 5.x changed CLIP's output format — see `Implementation/PROGRESS.md` for detail). `scripts/compute_baseline_drift.py` written and smoke-tested successfully on one chain, but at ~178s/chain it's too slow for the laptop (~6hrs for all 120) — added to the Colab notebook to run on GPU instead.
 
 ## Next
-- **You**: make the GitHub repo (`imanshadilshan/semantic_drift`) public, then run `Implementation/notebooks/colab_run_pipeline.ipynb` on Google Colab (T4 GPU) — it now clones the repo directly (dataset images are committed to git, no manual upload needed). Expect first-run debugging since this GPU code hasn't been tested against the real models yet.
-- **Day 14-15** (after that): drift-scoring pass over the saved baseline outputs.
+- **You**: run the new "Compute Drift Scores" cells in `notebooks/colab_run_pipeline.ipynb` on Colab, download `results/baseline_drift_scores.csv`.
+- **Day 16-19** (after that): masked-conditioning + region-locking mitigations, compared against this baseline.
 
 ## Blockers
 - None.

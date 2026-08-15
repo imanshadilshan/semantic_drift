@@ -1,6 +1,6 @@
 # Progress
 
-## Status: Day 1-3 (repo scaffold + literature review) mostly done; design finalization in progress
+## Status: Days 1-13 code done and run (edit chains generated on Colab GPU); Day 14-15 drift-scoring code written, running on Colab now
 
 ## Done
 - Repo scaffolding: folder structure under `Implementation/` (src, tests, data, configs, notebooks, results, human_eval).
@@ -19,9 +19,15 @@
 - **Day 10-13 — Model wrappers**: `src/edit_runner.py` (InstructPix2Pix, `diffusers` pipeline) and `src/segment.py` (SAM, `segment_anything` package) implemented — both lazy-load their models on first call so importing them doesn't require a GPU. `src/data_loader.py` also implemented (`load_edit_chains()`, `load_image()`) with 2 new unit tests (12/12 total passing). **Not yet run** — no GPU on this machine, so this code is unverified against the real models until it runs on Colab.
 - **Day 10-13 — Colab notebook**: `notebooks/colab_run_pipeline.ipynb` rewritten into a real, runnable pipeline. Now GitHub-based: `data/raw_images/` (60 images, 8.6MB) is committed to git (`.gitignore` updated to stop excluding it) so the notebook does a plain `git clone` of the repo instead of a manual zip upload. Repo is being made public on GitHub so Colab doesn't need a token. Notebook then loads the dataset, runs a SAM smoke test, and runs all 120 baseline edit chains (resizing to 512x512, saving every step to `results/baseline/`, skip-if-done so it survives a disconnect).
 
+- **Day 10-13 — Colab run complete**: repo made public, notebook run on Colab GPU, all 120 baseline chains generated (5 images each: original + 4 steps) and downloaded back — verified locally, all 120 chain folders complete, no gaps. `results/baseline/` is now committed to git too (`.gitignore` updated) alongside `data/raw_images/`.
+- **Day 14-15 — Drift scoring**: `src/clip_embed.py` added (`embed_image()`, `embed_text()`, `identify_target_regions()` — CLIP picks which pre-edit region an instruction targets, via cosine similarity to the instruction text). `src/segment.py` refactored: `get_region_boxes()` + `crop_regions()` split out so the SAME box set (from the pre-edit image) is used to crop both pre- and post-edit images — segmenting each independently would give unrelated region_ids with no correspondence. `scripts/compute_baseline_drift.py` written, ties it together into `results/baseline_drift_scores.csv`.
+  - **Bug found and fixed during smoke test**: `transformers` 5.x changed `CLIPModel.get_image_features()`/`get_text_features()` to return a `BaseModelOutputWithPooling` instead of a plain tensor — the real 512-dim embedding is in `.pooler_output`, not the return value itself. Verified the fix with a synthetic red/blue image vs. text test (correct image matched correct text: 0.31 vs 0.24 similarity).
+  - **Known limitation, not a bug**: `identify_target_regions()` matches instruction text against *pre-edit* regions, so it works well for "remove X" / "change X" instructions but has no strong match for "add X" instructions (the new object doesn't exist pre-edit) — meaning "add" steps will show somewhat inflated drift, since the newly-added (legitimately requested) content isn't excluded as a target region. Worth a sentence in the write-up's Limitations section.
+  - Single-chain smoke test passed with plausible scores (~0.06/step). **CPU speed is the blocker**: ~178s/chain measured locally → ~6 hours for all 120, so this needs to run on Colab GPU, not the laptop.
+
 ## Next
-- **You**: make the GitHub repo public, open `notebooks/colab_run_pipeline.ipynb` in Google Colab (T4 GPU runtime), run it top to bottom. This is a real run against real models — expect it to take a while (120 chains x ~4 steps) and to need debugging on first run since none of this GPU code has executed yet.
-- **Day 14-15** (after the Colab run): implement the drift-scoring pass over the saved baseline outputs using `drift_score.py` + `segment.py`, and spot-check scores by eye before trusting the full batch.
+- **You**: run the two new notebook cells ("Compute Drift Scores") on Colab GPU, download `results/baseline_drift_scores.csv` when done.
+- **Day 16-19** (after that): implement and run the masked-conditioning + region-locking mitigations, using the baseline scores as the comparison point.
 
 ## Decisions / notes
 - Implementation code lives in `Implementation/` (sibling to `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/`, `Final Paper/`), not at the repo root.
