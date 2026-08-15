@@ -9,10 +9,7 @@ data/.cache/
 # raw_images/ is intentionally NOT ignored: the ~60 COCO images (~8.6MB) are committed
 # so Colab can `git clone` the full dataset instead of needing a manual zip upload.
 
-results/baseline/*
-!results/baseline/.gitkeep
-results/mitigated/*
-!results/mitigated/.gitkeep
+
 
 *.ckpt
 *.pth
