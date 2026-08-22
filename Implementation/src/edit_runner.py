@@ -37,18 +37,18 @@ def run_edit(
     ).images[0]
 
 
-def run_edit_chain(image: Image.Image, instructions: list[str], mitigation=None) -> list[Image.Image]:
+def run_edit_chain(image: Image.Image, instructions: list[str], step_fn=None) -> list[Image.Image]:
     """Applies instructions sequentially, each step's output feeding the next.
 
-    Returns one image per step (does not include the original). If mitigation is given, it's
-    called as mitigation(pre_step_image, raw_edited_image) -> corrected_image after every step.
+    Returns one image per step (does not include the original). step_fn(pre_image, instruction) ->
+    edited_image defaults to plain run_edit (no mitigation). Mitigation strategies in mitigation.py
+    are full step functions rather than post-hoc correctors, since masked conditioning needs to
+    control what the model is given *before* generation, not just clean up its output after.
     """
+    step_fn = step_fn or run_edit
     outputs = []
     current = image
     for instruction in instructions:
-        edited = run_edit(current, instruction)
-        if mitigation is not None:
-            edited = mitigation(current, edited)
-        outputs.append(edited)
-        current = edited
+        current = step_fn(current, instruction)
+        outputs.append(current)
     return outputs
