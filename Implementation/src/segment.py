@@ -39,11 +39,16 @@ def _get_mask_generator(model_type: str = "vit_b"):
 
 
 def get_region_boxes(image: Image.Image, checkpoint: str = "vit_b") -> dict:
-    """Returns {region_id: (x, y, w, h)} bounding boxes for each mask SAM finds in `image`."""
+    """Returns {region_id: (x, y, w, h)} bounding boxes for each mask SAM finds in `image`.
+
+    SAM's own "bbox" values are Python floats (from a tensor .tolist()), not ints. PIL's crop()
+    tolerates that silently, but paste() raises TypeError on a non-integer box — so this rounds
+    and casts here, once, rather than at every call site that eventually pastes.
+    """
     generator = _get_mask_generator(checkpoint)
     image_np = np.array(image.convert("RGB"))
     masks = generator.generate(image_np)
-    return {str(i): tuple(mask["bbox"]) for i, mask in enumerate(masks)}
+    return {str(i): tuple(int(round(v)) for v in mask["bbox"]) for i, mask in enumerate(masks)}
 
 
 def crop_regions(image: Image.Image, boxes: dict) -> dict:
