@@ -168,6 +168,38 @@
     font-size: 1.15rem;
   }
 
+  .asked {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+  .asked .asked-label {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .asked ol {
+    margin: 0;
+    padding-left: 1.3em;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .asked li {
+    font-size: 0.92rem;
+  }
+  .asked li::marker {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85em;
+    color: var(--accent);
+  }
+
   .frames {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -324,7 +356,8 @@
       <p class="eg">
         <b>Example:</b> if the request was "add a bird" and a bird appears — that's the point, ignore it.
         But if the sky also changed color, or someone's face looks different, or the lighting shifted
-        across the whole photo — that's unintended change. Score it 1 (none) to 5 (extreme).
+        across the whole photo — that's unintended change. Score it 1 (none) to 5 (extreme). Each set
+        below shows you exactly what was asked, so you always know what to ignore.
       </p>
     </div>
     <label class="field-label" for="raterName">Your name or initials (optional)</label>
@@ -351,9 +384,14 @@
 
   const assignment = chains.map(() => (Math.random() < 0.5 ? ['baseline_edit', 'mitigated_edit'] : ['mitigated_edit', 'baseline_edit']));
 
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
   chains.forEach((chain, i) => {
     ratings[chain.id] = { a: null, b: null };
     const [condA, condB] = assignment[i];
+    const instructionItems = chain.instructions.map((instr) => `<li>${escapeHtml(instr)}</li>`).join('');
 
     const el = document.createElement('div');
     el.className = 'chain';
@@ -361,6 +399,10 @@
       <div class="chain-head">
         <span class="chain-num">${String(i + 1).padStart(2, '0')} / 15</span>
         <span class="chain-title">Set ${i + 1}</span>
+      </div>
+      <div class="asked">
+        <div class="asked-label">What was asked, in order</div>
+        <ol>${instructionItems}</ol>
       </div>
       <div class="frames">
         <figure class="frame">

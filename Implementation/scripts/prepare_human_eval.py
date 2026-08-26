@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASELINE_DIR = ROOT / "results" / "baseline"
 MITIGATED_DIR = ROOT / "results" / "mitigated" / "region_locking"
 SCORES_PATH = ROOT / "results" / "baseline_drift_scores.csv"
+INSTRUCTIONS_PATH = ROOT / "data" / "edit_instructions.json"
 OUTPUT_PATH = ROOT / "human_eval" / "rating_data.json"
 
 N_PER_STRATUM = 5
@@ -51,6 +52,10 @@ def select_stratified_sample() -> list[dict]:
 
 
 def main():
+    with open(INSTRUCTIONS_PATH) as f:
+        all_chains = json.load(f)
+    instructions_lookup = {(c["image_id"], c["chain_type"]): c["instructions"] for c in all_chains}
+
     sample = select_stratified_sample()
     chains = []
 
@@ -65,6 +70,7 @@ def main():
                 "id": f"chain_{i}",
                 "image_id": row["image_id"],
                 "chain_type": chain_type,
+                "instructions": instructions_lookup[(row["image_id"], chain_type)],
                 "baseline_drift_score": float(row["drift_score"]),  # not shown to raters
                 "original": to_jpeg_b64(baseline_chain_dir / "step0_original.png"),
                 "baseline_edit": to_jpeg_b64(baseline_chain_dir / "step4.png"),
