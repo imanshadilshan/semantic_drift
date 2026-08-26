@@ -1,0 +1,601 @@
+image_id,chain_type,step,instruction,drift_score
+000000530470.jpg,object_level,1,change the orange truck to a red truck,-4.163336342344337e-17
+000000530470.jpg,object_level,2,add a bicycle parked next to the truck,-6.938893903907228e-17
+000000530470.jpg,object_level,3,remove the yellow kite from the sky,0.018831698286488143
+000000530470.jpg,object_level,4,add a dog running on the grass near the trees,0.0035218821726002345
+000000530470.jpg,object_level,cumulative,,0.022353580459088265
+000000530470.jpg,global,1,make it a sunny day,0.01104775485783685
+000000530470.jpg,global,2,add autumn colors to the trees,-4.7580986769649563e-17
+000000530470.jpg,global,3,make it look like sunset,0.0013276208906611378
+000000530470.jpg,global,4,add light snow falling,-1.586032892321652e-17
+000000530470.jpg,global,cumulative,,0.012375375748497926
+000000157807.jpg,object_level,1,change the cat's fur color to orange and white,0.024963789474393074
+000000157807.jpg,object_level,2,put a small bow on the cat's head,0.036861190611129746
+000000157807.jpg,object_level,3,add a bath towel hanging on the wall,0.008831136046685438
+000000157807.jpg,object_level,4,remove the cat's tail,0.030685648145231892
+000000157807.jpg,object_level,cumulative,,0.10134176427744016
+000000157807.jpg,global,1,make the bathroom tiles blue,0.009468352083650107
+000000157807.jpg,global,2,"make the lighting warmer, like evening light",0.0004441731260163921
+000000157807.jpg,global,3,turn the photo into a black and white photo,0.004094596985352071
+000000157807.jpg,global,4,make it look like an old vintage photograph,0.0001379375643776104
+000000157807.jpg,global,cumulative,,0.014145059759396181
+000000260106.jpg,object_level,1,change the horse's color to black,-5.2427198385076835e-17
+000000260106.jpg,object_level,2,change the rider's helmet to red,0.0007771083703568505
+000000260106.jpg,object_level,3,add a number bib on the rider's back,0.0021261216152085993
+000000260106.jpg,object_level,4,remove the striped poles in front of the horse,0.0063424980308891665
+000000260106.jpg,object_level,cumulative,,0.009245728016454563
+000000260106.jpg,global,1,make it a rainy day,0.0007148550977009974
+000000260106.jpg,global,2,make it look like early morning with fog,-4.50090415388577e-17
+000000260106.jpg,global,3,turn the grass field brown like autumn,0.002439659795807505
+000000260106.jpg,global,4,make it look like a painting,-3.39234813079909e-17
+000000260106.jpg,global,cumulative,,0.0031545148935084233
+000000376278.jpg,object_level,1,add a small bird standing next to the zebra,0.000540767482830761
+000000376278.jpg,object_level,2,change the zebra's stripes to a lighter shade,-2.7755575615628914e-17
+000000376278.jpg,object_level,3,remove the second zebra visible on the right edge,-2.7755575615628914e-17
+000000376278.jpg,object_level,4,add a tree in the background,-2.2970131543968756e-17
+000000376278.jpg,object_level,cumulative,,0.0005407674828306825
+000000376278.jpg,global,1,make it a rainy overcast day,-3.568574007723718e-17
+000000376278.jpg,global,2,add golden sunset lighting,-2.7755575615628914e-17
+000000376278.jpg,global,3,turn the ground green with grass,-3.4455197315953135e-17
+000000376278.jpg,global,4,make it look like a winter scene with light snow,-3.568574007723718e-17
+000000376278.jpg,global,cumulative,,-1.3358225308605638e-16
+000000547144.jpg,object_level,1,change the laptop's color to red,0.00642257255524158
+000000547144.jpg,object_level,2,add a coffee mug next to the keyboard,0.005362901915317374
+000000547144.jpg,object_level,3,remove the mouse next to the right monitor,0.0010209873648482147
+000000547144.jpg,object_level,4,change the desktop wallpaper on the CRT monitor to a photo of mountains,0.0061104647753878975
+000000547144.jpg,object_level,cumulative,,0.018916926610795068
+000000547144.jpg,global,1,"make the room lighting dimmer, like night time",0.0011190417014443031
+000000547144.jpg,global,2,"make the whole scene look retro, like an old photograph",0.0015076533392117029
+000000547144.jpg,global,3,add warm sunset light coming through a window,0.006294293208097271
+000000547144.jpg,global,4,make it look like a sketch drawing,0.0008274654691212219
+000000547144.jpg,global,cumulative,,0.009748453717874498
+000000290081.jpg,object_level,1,change the oranges to apples,0.010752209850207901
+000000290081.jpg,object_level,2,change the bowl color to red,0.0007617234824941846
+000000290081.jpg,object_level,3,add a banana on top of the fruit,0.00849452953123915
+000000290081.jpg,object_level,4,remove one orange from the bowl,0.01914706264992351
+000000290081.jpg,object_level,cumulative,,0.039155525513864746
+000000290081.jpg,global,1,make the lighting brighter and more golden,0.010985558780457594
+000000290081.jpg,global,2,make it look like it's nighttime outside the window,0.01764582950359305
+000000290081.jpg,global,3,turn the photo into a watercolor painting,0.0036613627972233707
+000000290081.jpg,global,4,"add a warm, cozy autumn atmosphere",0.0016670825412181149
+000000290081.jpg,global,cumulative,,0.03395983362249213
+000000365207.jpg,object_level,1,change the red car to a blue car,0.0061059056838025
+000000365207.jpg,object_level,2,add a hat on the dog,0.0018163278409083024
+000000365207.jpg,object_level,3,change the dog's fur color to white,0.001847732641207971
+000000365207.jpg,object_level,4,remove the black car in the background,0.07785583532016069
+000000365207.jpg,object_level,cumulative,,0.08762580148607946
+000000365207.jpg,global,1,make it a rainy day,0.004300141493959371
+000000365207.jpg,global,2,make it look like sunset lighting,7.909674336448663e-05
+000000365207.jpg,global,3,turn the scene into winter with snow on the ground,1.1759272400804885e-05
+000000365207.jpg,global,4,make the photo look like an old film photograph,1.890365741905505e-05
+000000365207.jpg,global,cumulative,,0.004409901167143718
+000000370900.jpg,object_level,1,change the left teddy bear's ribbon to blue,1.586032892321652e-17
+000000370900.jpg,object_level,2,remove the tiara from the middle bear,0.0024764696636442114
+000000370900.jpg,object_level,3,add a bow tie to the bear on the right,0.0036982236165488285
+000000370900.jpg,object_level,4,change the bears' fur color to light brown,0.0042489427258928705
+000000370900.jpg,object_level,cumulative,,0.010423636006085927
+000000370900.jpg,global,1,make the lighting purple and dreamy,1.586032892321652e-17
+000000370900.jpg,global,2,add sparkles in the background,0.0012583729743645214
+000000370900.jpg,global,3,make it look like a vintage photograph,0.0005244407886048075
+000000370900.jpg,global,4,turn the background into a starry night sky,0.0014832194021932885
+000000370900.jpg,global,cumulative,,0.0032660331651626334
+000000015440.jpg,object_level,1,change the stop sign to a yield sign,0.0025330515941846153
+000000015440.jpg,object_level,2,add a bicycle leaning against the pole,1.7763568394002505e-17
+000000015440.jpg,object_level,3,remove the fence behind the stop sign,0.012025819570829743
+000000015440.jpg,object_level,4,change the bus color to yellow,0.008276321893157877
+000000015440.jpg,object_level,cumulative,,0.022835193058172255
+000000015440.jpg,global,1,make it look like nighttime,-1.644774851296528e-17
+000000015440.jpg,global,2,add rain falling on the street,-4.625929269271485e-18
+000000015440.jpg,global,3,make it a snowy winter scene,4.625929269271485e-18
+000000015440.jpg,global,4,make the lighting look like early morning,0.002346109104261298
+000000015440.jpg,global,cumulative,,0.0023461091042612813
+000000376365.jpg,object_level,1,change the vase color to red,0.05307910778196576
+000000376365.jpg,object_level,2,add more leaves to the plant,0.003202897191945592
+000000376365.jpg,object_level,3,change the candle color to blue,0.009572746345083255
+000000376365.jpg,object_level,4,remove the candle glass next to the vase,0.024568685704081418
+000000376365.jpg,object_level,cumulative,,0.09042343702307604
+000000376365.jpg,global,1,"make the room lighting darker, like evening",0.027493611716846916
+000000376365.jpg,global,2,add warm sunset light through the window,0.018309398822584935
+000000376365.jpg,global,3,turn the photo into a black and white photo,0.0
+000000376365.jpg,global,4,make it look like a painting,0.0
+000000376365.jpg,global,cumulative,,0.04580301053943185
+000000362716.jpg,object_level,1,change the player's shirt color to blue,0.0013885954817613344
+000000362716.jpg,object_level,2,change the tennis racket's string color to red,0.004120055464604695
+000000362716.jpg,object_level,3,remove the white cap,0.0005568922979903102
+000000362716.jpg,object_level,4,add a wristband on his other wrist,0.0005867440178964367
+000000362716.jpg,object_level,cumulative,,0.006652287262252777
+000000362716.jpg,global,1,make it look like nighttime under stadium lights,0.004326972208061006
+000000362716.jpg,global,2,make it a rainy match,0.0008313790125458897
+000000362716.jpg,global,3,turn the photo into a black and white photo,0.0027775794993202176
+000000362716.jpg,global,4,add golden sunset lighting,2.896233977283017e-17
+000000362716.jpg,global,cumulative,,0.007935930719927143
+000000414170.jpg,object_level,1,change the front skier's jacket to red,0.055392559540796284
+000000414170.jpg,object_level,2,remove the second skier from the trail,0.0011199470638802852
+000000414170.jpg,object_level,3,add a dog running beside the front skier,2.6122894697062506e-17
+000000414170.jpg,object_level,4,change the trees to autumn colors,0.0002820959405944734
+000000414170.jpg,object_level,cumulative,,0.05679460254527107
+000000414170.jpg,global,1,make it a heavy snowstorm,0.0007496172023902873
+000000414170.jpg,global,2,make it look like sunset lighting through the trees,-2.6122894697062506e-17
+000000414170.jpg,global,3,turn the photo into a black and white photo,0.00124158774736996
+000000414170.jpg,global,4,make it look like early morning fog,0.0
+000000414170.jpg,global,cumulative,,0.001991204949760221
+000000521719.jpg,object_level,1,change the ladybug kite to a butterfly kite,0.009415064197308287
+000000521719.jpg,object_level,2,remove the striped kite on the left,0.002645198335191734
+000000521719.jpg,object_level,3,add a price tag to the frog kite,1.9984014443252817e-17
+000000521719.jpg,object_level,4,change the wooden post color to green,3.0068540250264654e-17
+000000521719.jpg,object_level,cumulative,,0.01206026253250007
+000000521719.jpg,global,1,make it a rainy overcast day,0.0019118560796523687
+000000521719.jpg,global,2,make it nighttime with string lights,0.0063730868805187725
+000000521719.jpg,global,3,turn the photo into a watercolor painting,0.00295205921665037
+000000521719.jpg,global,4,add golden sunset lighting,-2.220446049250313e-18
+000000521719.jpg,global,cumulative,,0.011237002176821508
+000000428218.jpg,object_level,1,change the frisbee color to orange,0.0
+000000428218.jpg,object_level,2,change the man's shirt to red,-1.959217102279688e-17
+000000428218.jpg,object_level,3,remove the fence in the background,0.03205909705487702
+000000428218.jpg,object_level,4,add a dog jumping to catch the frisbee,0.006227012448331494
+000000428218.jpg,object_level,cumulative,,0.038286109503208494
+000000428218.jpg,global,1,make it a rainy day,0.0
+000000428218.jpg,global,2,make it look like autumn with fallen leaves,1.959217102279688e-17
+000000428218.jpg,global,3,make it look like early morning fog,0.031105789275735665
+000000428218.jpg,global,4,turn the photo into a black and white photo,0.011057300890311036
+000000428218.jpg,global,cumulative,,0.04216309016604672
+000000094336.jpg,object_level,1,change the cat's fur to solid black,0.0034023765085786197
+000000094336.jpg,object_level,2,add water dripping from the faucet,0.020554236529847492
+000000094336.jpg,object_level,3,add a small towel next to the sink,0.009397960002082338
+000000094336.jpg,object_level,4,remove the cat's whiskers,0.04127895523710759
+000000094336.jpg,object_level,cumulative,,0.07463352827761605
+000000094336.jpg,global,1,"make the lighting cooler, like daylight",0.00829802953796177
+000000094336.jpg,global,2,turn the photo into a black and white photo,0.0024656778623623715
+000000094336.jpg,global,3,make it look like an old vintage photograph,0.0023645607324067203
+000000094336.jpg,global,4,make the bathroom look brighter and more modern,0.00010861049793979098
+000000094336.jpg,global,cumulative,,0.013236878630670653
+000000384670.jpg,object_level,1,change the yellow shirt to blue,0.009005646529101666
+000000384670.jpg,object_level,2,change the tennis racket's grip color to red,0.03518254378226235
+000000384670.jpg,object_level,3,remove the second player bending down,0.1824227087765655
+000000384670.jpg,object_level,4,add a tennis ball on the ground,0.03574987861963036
+000000384670.jpg,object_level,cumulative,,0.26236077770755983
+000000384670.jpg,global,1,make it look like a night match under stadium lights,0.03636331130483957
+000000384670.jpg,global,2,make it a rainy match,0.005765774815408677
+000000384670.jpg,global,3,turn the photo into a black and white photo,0.005898726381811061
+000000384670.jpg,global,4,add golden sunset lighting,0.008609032507424756
+000000384670.jpg,global,cumulative,,0.05663684500948407
+000000021903.jpg,object_level,1,change the man's shirt to blue,0.004734847086981982
+000000021903.jpg,object_level,2,change the elephant's skin tone to a lighter gray,0.0031419640227449697
+000000021903.jpg,object_level,3,remove the second person on the right,0.009614404309754429
+000000021903.jpg,object_level,4,add a hat on the man,0.004263756883136205
+000000021903.jpg,object_level,cumulative,,0.02175497230261758
+000000021903.jpg,global,1,make it a rainy day,0.0026543332638920467
+000000021903.jpg,global,2,make it look like early morning mist,0.00029107250557133975
+000000021903.jpg,global,3,turn the photo into a black and white photo,0.004466804963401402
+000000021903.jpg,global,4,add golden sunset lighting through the trees,0.003978138743145461
+000000021903.jpg,global,cumulative,,0.01139034947601025
+000000507575.jpg,object_level,1,change the laptop's wallpaper to a mountain photo,0.006713908209483761
+000000507575.jpg,object_level,2,remove the printer from the desk,0.004277694263538861
+000000507575.jpg,object_level,3,add a coffee mug next to the keyboard,0.005409477748032148
+000000507575.jpg,object_level,4,change the monitor's wallpaper to a purple nebula,0.003683089272932036
+000000507575.jpg,object_level,cumulative,,0.020084169493986805
+000000507575.jpg,global,1,"make the room lighting dimmer, like night time",0.0039505689085735955
+000000507575.jpg,global,2,"make the whole scene look retro, like an old photograph",-1.0327656043024712e-17
+000000507575.jpg,global,3,add warm sunset light coming through a window,0.0007864157042786994
+000000507575.jpg,global,4,make it look like a sketch drawing,0.00017494786682930522
+000000507575.jpg,global,cumulative,,0.0049119324796815895
+000000320642.jpg,object_level,1,change the woman in black's dress to red,0.001354088441313861
+000000320642.jpg,object_level,2,remove the necklace she's wearing,0.028764295149894592
+000000320642.jpg,object_level,3,add sunglasses on the woman in gray,0.000821044332470322
+000000320642.jpg,object_level,4,change the neon sign's color to blue,0.0010166674225744494
+000000320642.jpg,object_level,cumulative,,0.031956095346253224
+000000320642.jpg,global,1,make it look like a party with colorful lights,1.3877787807814457e-17
+000000320642.jpg,global,2,make it nighttime outside the window,0.00016324928517303104
+000000320642.jpg,global,3,turn the photo into a black and white photo,0.000341897184117268
+000000320642.jpg,global,4,"add a warm, festive atmosphere",2.5620531337503614e-17
+000000320642.jpg,global,cumulative,,0.0005051464692903385
+000000034760.jpg,object_level,1,change the shower curtain to red and white stripes,0.004369151868082505
+000000034760.jpg,object_level,2,remove the cleaning spray cans from the counter,0.013920276934545138
+000000034760.jpg,object_level,3,add a bath mat in front of the tub,0.01187795609335569
+000000034760.jpg,object_level,4,change the toilet lid color to black,0.0015794221673950948
+000000034760.jpg,object_level,cumulative,,0.03174680706337843
+000000034760.jpg,global,1,"make the lighting warmer, like evening light",0.023279958037577292
+000000034760.jpg,global,2,make the bathroom tiles blue,0.004186023803089401
+000000034760.jpg,global,3,turn the photo into a black and white photo,-3.5059674461847047e-17
+000000034760.jpg,global,4,make it look like an old vintage photograph,0.001289892979408192
+000000034760.jpg,global,cumulative,,0.02875587482007485
+000000110638.jpg,object_level,1,change the baby elephant's skin tone to lighter gray,0.006526539488170162
+000000110638.jpg,object_level,2,add a small bird sitting on one of the adult elephant's backs,0.005845188833163635
+000000110638.jpg,object_level,3,remove the rock in the foreground,0.0032003021277090538
+000000110638.jpg,object_level,4,add a puddle of water on the sand,0.0020772295409996477
+000000110638.jpg,object_level,cumulative,,0.0176492599900425
+000000110638.jpg,global,1,make it a rainy day,0.0023157463795595123
+000000110638.jpg,global,2,make it look like early morning fog,-1.959217102279688e-17
+000000110638.jpg,global,3,turn the photo into a black and white photo,1.3061447348531253e-17
+000000110638.jpg,global,4,add golden sunset lighting,3.700743415417188e-17
+000000110638.jpg,global,cumulative,,0.0023157463795595427
+000000174231.jpg,object_level,1,change the cat's fur to solid black,1.586032892321652e-17
+000000174231.jpg,object_level,2,change the laptop's color to silver,0.015495670521714362
+000000174231.jpg,object_level,3,remove the black chair,0.00575300220788754
+000000174231.jpg,object_level,4,add a coffee mug on the table,-2.960594732333751e-17
+000000174231.jpg,object_level,cumulative,,0.021248672729601886
+000000174231.jpg,global,1,"make the room lighting warmer, like evening light",0.006711318040814008
+000000174231.jpg,global,2,turn the photo into a black and white photo,0.0034819850204198532
+000000174231.jpg,global,3,make it look like an old vintage photograph,0.0006392697465008352
+000000174231.jpg,global,4,make the wall color light blue,6.470763544034039e-09
+000000174231.jpg,global,cumulative,,0.010832579278498242
+000000164883.jpg,object_level,1,change the man's shirt to red,0.013193858523049376
+000000164883.jpg,object_level,2,change the TV avatar's hair color to blonde,0.004074146640229276
+000000164883.jpg,object_level,3,"remove the ""Quit"" button text",0.002585662201922787
+000000164883.jpg,object_level,4,add glasses on the man,0.0030612498432393705
+000000164883.jpg,object_level,cumulative,,0.022914917208440806
+000000164883.jpg,global,1,"make the room lighting dimmer, like night time",0.004535558555666291
+000000164883.jpg,global,2,"make the whole scene look retro, like an old photograph",0.0011629956909306983
+000000164883.jpg,global,3,add colorful party lighting,0.000818300345265182
+000000164883.jpg,global,4,turn the photo into a black and white photo,0.0001245556968375762
+000000164883.jpg,global,cumulative,,0.006641410288699748
+000000205333.jpg,object_level,1,change the front skier's jacket to blue,0.007226713301117971
+000000205333.jpg,object_level,2,remove the second skier in the distance,0.004732942375864135
+000000205333.jpg,object_level,3,add a flag marker on the ski pole,0.004214524980795387
+000000205333.jpg,object_level,4,add a dog standing next to the skier,0.07114144684683893
+000000205333.jpg,object_level,cumulative,,0.08731562750461642
+000000205333.jpg,global,1,make it a clear sunny day,0.10640175868210881
+000000205333.jpg,global,2,make it look like sunset lighting,-2.220446049250313e-16
+000000205333.jpg,global,3,turn the photo into a black and white photo,-7.401486830834377e-17
+000000205333.jpg,global,4,add heavy falling snow,0.0
+000000205333.jpg,global,cumulative,,0.10640175868210852
+000000175251.jpg,object_level,1,change the toothbrush color to blue,2.0816681711721685e-17
+000000175251.jpg,object_level,2,add a rubber duck on the bathtub edge,0.02408747231805785
+000000175251.jpg,object_level,3,remove the clothes hanging in the background,0.01677821625923751
+000000175251.jpg,object_level,4,add a small towel around the child's shoulders,4.0371746350005693e-17
+000000175251.jpg,object_level,cumulative,,0.04086568857729542
+000000175251.jpg,global,1,"make the lighting warmer, like morning light",2.0816681711721685e-17
+000000175251.jpg,global,2,turn the photo into a black and white photo,0.011233897825169425
+000000175251.jpg,global,3,make it look like an old vintage photograph,0.008490351967460877
+000000175251.jpg,global,4,make the bathroom tiles blue,0.0020266427671753254
+000000175251.jpg,global,cumulative,,0.021750892559805647
+000000002532.jpg,object_level,1,change the skier's jacket color to red,-1.7529837230923523e-17
+000000002532.jpg,object_level,2,remove the tree on the right,1.612144650921521e-05
+000000002532.jpg,object_level,3,add a second skier next to them,2.8258503892121316e-05
+000000002532.jpg,object_level,4,add a backpack on the skier,5.843279076974508e-18
+000000002532.jpg,object_level,cumulative,,4.4379950401324836e-05
+000000002532.jpg,global,1,make it an overcast cloudy day,0.0039647660338288865
+000000002532.jpg,global,2,make it look like sunset lighting,0.0008634252815640478
+000000002532.jpg,global,3,turn the photo into a black and white photo,0.0005696030308507405
+000000002532.jpg,global,4,add heavy falling snow,0.013253982220966644
+000000002532.jpg,global,cumulative,,0.01865177656721032
+000000201072.jpg,object_level,1,change the player's outfit to blue,0.007989865960212868
+000000201072.jpg,object_level,2,change the tennis racket's strings to red,0.0003528268533326803
+000000201072.jpg,object_level,3,remove the spectators in the background,0.006506204355474741
+000000201072.jpg,object_level,4,add a wristband on his left wrist,0.015285450076239715
+000000201072.jpg,object_level,cumulative,,0.030134347245260006
+000000201072.jpg,global,1,make it look like a night match under stadium lights,0.0015005792622342412
+000000201072.jpg,global,2,make it a rainy match,0.0009029966004015359
+000000201072.jpg,global,3,turn the photo into a black and white photo,0.0021207327726710883
+000000201072.jpg,global,4,add golden sunset lighting,0.001344184401257639
+000000201072.jpg,global,cumulative,,0.005868493036564505
+000000063047.jpg,object_level,1,change the man's shirt to a solid red shirt,0.016838011870377572
+000000063047.jpg,object_level,2,remove his glasses,0.0019081310895326024
+000000063047.jpg,object_level,3,add a baseball cap on his head,3.730478839697701e-05
+000000063047.jpg,object_level,4,change the paper bag to a blue bag,0.00783377432477983
+000000063047.jpg,object_level,cumulative,,0.026617222073086984
+000000063047.jpg,global,1,make it a rainy day,0.00021697422180519185
+000000063047.jpg,global,2,make it look like evening with warm lighting,0.0027664518728360756
+000000063047.jpg,global,3,turn the photo into a black and white photo,5.30028400006266e-06
+000000063047.jpg,global,4,make it look like an old vintage photograph,8.869457025806326e-07
+000000063047.jpg,global,cumulative,,0.002989613324343911
+000000139077.jpg,object_level,1,change the child's shirt to blue,0.0005157103970833267
+000000139077.jpg,object_level,2,remove the stack of pillows on the cabinet,0.021866610087308423
+000000139077.jpg,object_level,3,add a soccer ball on the floor,0.0012438390484044032
+000000139077.jpg,object_level,4,change the TV game's background color to purple,0.003388198684620033
+000000139077.jpg,object_level,cumulative,,0.027014358217416184
+000000139077.jpg,global,1,"make the room lighting dimmer, like evening",0.007671870606804558
+000000139077.jpg,global,2,"make the whole scene look retro, like an old photograph",0.01458747095354319
+000000139077.jpg,global,3,add warm sunset light through the window on the left,-4.070817756958907e-17
+000000139077.jpg,global,4,turn the photo into a black and white photo,-4.810966440042345e-17
+000000139077.jpg,global,cumulative,,0.02225934156034766
+000000402473.jpg,object_level,1,change the black and white cat's fur to solid orange,0.022397330796126092
+000000402473.jpg,object_level,2,add a collar with a bell on the tabby cat,0.0003028592066679048
+000000402473.jpg,object_level,3,remove the black and white cat,0.11244578691225635
+000000402473.jpg,object_level,4,add a bow tie on the tabby cat,0.01172648216485217
+000000402473.jpg,object_level,cumulative,,0.1468724590799025
+000000402473.jpg,global,1,make the background light blue,0.011536323020754514
+000000402473.jpg,global,2,turn the photo into a black and white photo,-4.4408920985006264e-17
+000000402473.jpg,global,3,make it look like an old vintage photograph,0.0022001672088700075
+000000402473.jpg,global,4,add warm golden lighting,0.02313015124973487
+000000402473.jpg,global,cumulative,,0.03686664147935935
+000000079014.jpg,object_level,1,change the orange to an apple,0.0
+000000079014.jpg,object_level,2,remove the man's glasses,-6.344131569286608e-17
+000000079014.jpg,object_level,3,add a hat on the man,0.00462596272121274
+000000079014.jpg,object_level,4,change his shirt color to blue,0.011041619385617017
+000000079014.jpg,object_level,cumulative,,0.015667582106829694
+000000079014.jpg,global,1,make it a rainy day,0.0
+000000079014.jpg,global,2,turn the photo into a black and white photo,0.012511293119712974
+000000079014.jpg,global,3,make it look like an old vintage photograph,0.0014687050806624516
+000000079014.jpg,global,4,add golden sunset lighting,0.005576638636653142
+000000079014.jpg,global,cumulative,,0.019556636837028567
+000000138954.jpg,object_level,1,change the peach slices to orange slices,0.003804425796666795
+000000138954.jpg,object_level,2,remove the cucumber slices,5.246002828982727e-05
+000000138954.jpg,object_level,3,add a lemon wedge on the plate,0.006412796606056606
+000000138954.jpg,object_level,4,change the plate color to blue,0.0025756190889184996
+000000138954.jpg,object_level,cumulative,,0.01284530151993173
+000000138954.jpg,global,1,make the lighting brighter and more golden,0.0020896279434997056
+000000138954.jpg,global,2,turn the photo into a black and white photo,0.0033063102910555627
+000000138954.jpg,global,3,make it look like a painting,0.001836816156338595
+000000138954.jpg,global,4,"add a warm, cozy atmosphere",-4.270088556250602e-18
+000000138954.jpg,global,cumulative,,0.007232754390893859
+000000384808.jpg,object_level,1,change the man's shirt to solid black,0.025600532076175696
+000000384808.jpg,object_level,2,remove the cleaning bottles on the counter,0.007940617847672082
+000000384808.jpg,object_level,3,add a plant on the sink counter,0.015600050486580596
+000000384808.jpg,object_level,4,change the towel color to blue,0.054107253002140296
+000000384808.jpg,object_level,cumulative,,0.10324845341256868
+000000384808.jpg,global,1,"make the lighting warmer, like evening light",0.04784923062465275
+000000384808.jpg,global,2,make the bathroom tiles blue,0.006526354901375328
+000000384808.jpg,global,3,turn the photo into a black and white photo,4.0371746350005693e-17
+000000384808.jpg,global,4,make it look like an old vintage photograph,0.0026745697706562007
+000000384808.jpg,global,cumulative,,0.05705015529668432
+000000457559.jpg,object_level,1,change the red team's jersey to yellow,0.002436115857696104
+000000457559.jpg,object_level,2,change the ball to an orange ball,0.0023652118437409156
+000000457559.jpg,object_level,3,"remove the ""4th official"" sign",0.0019061405467209389
+000000457559.jpg,object_level,4,add a goalpost in the background,-4.37360585458395e-17
+000000457559.jpg,object_level,cumulative,,0.006707468248157915
+000000457559.jpg,global,1,make it a rainy match,0.005117959842625449
+000000457559.jpg,global,2,make it look like night under stadium lights,0.0008750751898552039
+000000457559.jpg,global,3,turn the photo into a black and white photo,-3.700743415417188e-17
+000000457559.jpg,global,4,add golden sunset lighting,0.00010702608806338483
+000000457559.jpg,global,cumulative,,0.0061000611205440005
+000000407943.jpg,object_level,1,change the umbrella's fabric to gold color,0.005386209871683692
+000000407943.jpg,object_level,2,add a hat on the silhouette,0.012880849055011714
+000000407943.jpg,object_level,3,remove the lights in the background,0.00018847574156010652
+000000407943.jpg,object_level,4,add a second umbrella beside it,0.003262732037033305
+000000407943.jpg,object_level,cumulative,,0.021718266705288813
+000000407943.jpg,global,1,make the whole photo colorful instead of black and white,0.008113420830838342
+000000407943.jpg,global,2,make it look like a concert with colorful lights,0.02751437348348144
+000000407943.jpg,global,3,turn the photo into a warm sepia tone,0.003168206640038085
+000000407943.jpg,global,4,make it look like a painting,0.003400818755306836
+000000407943.jpg,global,cumulative,,0.042196819709664705
+000000579635.jpg,object_level,1,change the surfboard color to yellow,0.017450198228463786
+000000579635.jpg,object_level,2,remove the sailboat on the horizon,-9.516197353929913e-17
+000000579635.jpg,object_level,3,add a dolphin jumping near the surfer,0.002192191960906656
+000000579635.jpg,object_level,4,change the surfer's wetsuit color to blue,-2.4671622769447922e-17
+000000579635.jpg,object_level,cumulative,,0.019642390189370324
+000000579635.jpg,global,1,make it a cloudy overcast day,-4.4408920985006264e-17
+000000579635.jpg,global,2,make it look like sunset lighting,0.03381118941219676
+000000579635.jpg,global,3,turn the photo into a black and white photo,-1.4802973661668753e-16
+000000579635.jpg,global,4,"add a stormy, dramatic sky",0.0
+000000579635.jpg,global,cumulative,,0.033811189412196574
+000000125806.jpg,object_level,1,change one cow's fur color to brown,0.016221329580665866
+000000125806.jpg,object_level,2,remove the wooden fence post,0.003671504349860503
+000000125806.jpg,object_level,3,add a bell around one cow's neck,0.010762819646852185
+000000125806.jpg,object_level,4,add a bird sitting on the fence,0.0
+000000125806.jpg,object_level,cumulative,,0.030655653577378553
+000000125806.jpg,global,1,make it a snowy winter scene,-9.25185853854297e-18
+000000125806.jpg,global,2,make it look like sunset lighting,0.010362860575354746
+000000125806.jpg,global,3,turn the photo into a black and white photo,0.0007250523843833733
+000000125806.jpg,global,4,add morning fog,-4.625929269271486e-17
+000000125806.jpg,global,cumulative,,0.011087912959738063
+000000314294.jpg,object_level,1,change the elephant's skin tone to a lighter gray,0.005975190291152644
+000000314294.jpg,object_level,2,remove the second elephant in the background,0.010796973571441406
+000000314294.jpg,object_level,3,add a bird perched on the rock,0.003231415601947424
+000000314294.jpg,object_level,4,add tusks to the elephant,0.016664388067118285
+000000314294.jpg,object_level,cumulative,,0.03666796753165976
+000000314294.jpg,global,1,make it a rainy day,1.959217102279688e-17
+000000314294.jpg,global,2,make it look like golden sunset lighting,0.001835124375650822
+000000314294.jpg,global,3,turn the photo into a black and white photo,6.1679056923619804e-18
+000000314294.jpg,global,4,add early morning fog,0.0001629940797061743
+000000314294.jpg,global,cumulative,,0.0019981184553570217
+000000426241.jpg,object_level,1,change the monitor's displayed image to a nature scene,0.0003314501751185151
+000000426241.jpg,object_level,2,remove the printer on the left,0.01964380022947197
+000000426241.jpg,object_level,3,add a coffee mug on the desk,0.001048107883745301
+000000426241.jpg,object_level,4,change the keyboard color to white,0.00026701545379910024
+000000426241.jpg,object_level,cumulative,,0.021290373742134886
+000000426241.jpg,global,1,"make the room lighting dimmer, like night time",-1.9308226515220113e-17
+000000426241.jpg,global,2,"make the whole scene look retro, like an old photograph",-1.7763568394002505e-17
+000000426241.jpg,global,3,add warm sunset light through a window,-8.881784197001253e-18
+000000426241.jpg,global,4,make it look like a sketch drawing,0.005106702116426623
+000000426241.jpg,global,cumulative,,0.005106702116426577
+000000576566.jpg,object_level,1,change the skateboarder's shirt to blue,0.0025427120164382183
+000000576566.jpg,object_level,2,remove the ramp on the ground,0.007539009154021931
+000000576566.jpg,object_level,3,add a helmet on the skateboarder,0.005213444775230042
+000000576566.jpg,object_level,4,change the skateboard's wheels to red,0.0002847151970549744
+000000576566.jpg,object_level,cumulative,,0.015579881142745167
+000000576566.jpg,global,1,make it a sunny clear day,0.0028284034486140775
+000000576566.jpg,global,2,make it look like sunset lighting,-3.0839528461809905e-17
+000000576566.jpg,global,3,turn the photo into a black and white photo,-1.959217102279688e-17
+000000576566.jpg,global,4,add rain falling,0.0019316755798230473
+000000576566.jpg,global,cumulative,,0.004760079028437074
+000000449909.jpg,object_level,1,change the boy's jacket to black,0.008811341740169256
+000000449909.jpg,object_level,2,change the giraffe's spot pattern to darker brown,0.02306729529716723
+000000449909.jpg,object_level,3,remove the rocks in the foreground,0.0019045257487751571
+000000449909.jpg,object_level,4,add a second giraffe standing behind the first,0.001844322254194153
+000000449909.jpg,object_level,cumulative,,0.035627485040305794
+000000449909.jpg,global,1,make it a rainy day,0.001371917714540207
+000000449909.jpg,global,2,make it look like golden sunset lighting,0.00034806582838560425
+000000449909.jpg,global,3,turn the photo into a black and white photo,-1.9825411154020653e-17
+000000449909.jpg,global,4,add early morning fog,0.00031937210399598885
+000000449909.jpg,global,cumulative,,0.0020393556469217805
+000000311928.jpg,object_level,1,change the boy's cap to red,0.0042585843743037245
+000000311928.jpg,object_level,2,change the ball color to orange,0.001038220104548541
+000000311928.jpg,object_level,3,remove the tall grass in the background,0.06427000095497892
+000000311928.jpg,object_level,4,add a baseball glove on the ground,4.4408920985006264e-17
+000000311928.jpg,object_level,cumulative,,0.06956680543383123
+000000311928.jpg,global,1,make it an overcast cloudy day,0.0033209467299355638
+000000311928.jpg,global,2,make it look like golden sunset lighting,-3.416070845000482e-17
+000000311928.jpg,global,3,turn the photo into a black and white photo,-8.540177112501205e-18
+000000311928.jpg,global,4,make it look like an old vintage photograph,0.04634770548880045
+000000311928.jpg,global,cumulative,,0.04966865221873597
+000000530466.jpg,object_level,1,change the red graffiti letters to blue,0.0
+000000530466.jpg,object_level,2,remove the purple graffiti on the right,0.03129520334299931
+000000530466.jpg,object_level,3,add a window reflection of trees,0.0006952451469202902
+000000530466.jpg,object_level,4,change the train's base color to green,-3.900783600034334e-17
+000000530466.jpg,object_level,cumulative,,0.03199044848991956
+000000530466.jpg,global,1,make it nighttime,0.0
+000000530466.jpg,global,2,make it a rainy day,0.00015228279380195757
+000000530466.jpg,global,3,turn the photo into a black and white photo,0.0007100713053816895
+000000530466.jpg,global,4,add golden sunset lighting,0.0008751064787968648
+000000530466.jpg,global,cumulative,,0.0017374605779805119
+000000172649.jpg,object_level,1,change the skateboarder's shirt to blue,0.010060462073101323
+000000172649.jpg,object_level,2,change the ramp color to orange,0.002900763070014878
+000000172649.jpg,object_level,3,remove the skateboard from his feet,0.0700882524329343
+000000172649.jpg,object_level,4,add a helmet on the skateboarder,-1.1102230246251565e-16
+000000172649.jpg,object_level,cumulative,,0.0830494775760504
+000000172649.jpg,global,1,make it a cloudy overcast day,0.153630271835959
+000000172649.jpg,global,2,make it look like sunset lighting,0.1075418769064081
+000000172649.jpg,global,3,turn the photo into a black and white photo,0.005059225731248817
+000000172649.jpg,global,4,add rain falling,0.0022959027975696933
+000000172649.jpg,global,cumulative,,0.26852727727118564
+000000136033.jpg,object_level,1,change the wall color to blue,-1.850371707708594e-17
+000000136033.jpg,object_level,2,remove the soap dispensers,0.001954419764839496
+000000136033.jpg,object_level,3,add a towel hanging next to the mirror,0.0012862422164773098
+000000136033.jpg,object_level,4,change the potted plant to a flowering plant,-2.114710523095536e-17
+000000136033.jpg,object_level,cumulative,,0.003240661981316766
+000000136033.jpg,global,1,make the lighting brighter and cooler,-1.850371707708594e-17
+000000136033.jpg,global,2,turn the photo into a black and white photo,0.0020734370485058218
+000000136033.jpg,global,3,make it look like an old vintage photograph,0.0024509148494706173
+000000136033.jpg,global,4,add warm golden lighting,0.002445351097102292
+000000136033.jpg,global,cumulative,,0.006969702995078712
+000000038678.jpg,object_level,1,change the woman's shirt to blue,0.0007750269925405713
+000000038678.jpg,object_level,2,change the bagel to a croissant,0.009498262364243506
+000000038678.jpg,object_level,3,remove the man in red in the background,0.0008319411478638054
+000000038678.jpg,object_level,4,add a napkin next to the plate,0.020177943186161937
+000000038678.jpg,object_level,cumulative,,0.031283173690809817
+000000038678.jpg,global,1,"make the lighting warmer, like golden hour",0.002118816208929275
+000000038678.jpg,global,2,turn the photo into a black and white photo,0.015695562177197635
+000000038678.jpg,global,3,make it look like an old vintage photograph,0.006025237544881303
+000000038678.jpg,global,4,make it look like a rainy day outside the window,0.0016113821100600032
+000000038678.jpg,global,cumulative,,0.025450998041068217
+000000546475.jpg,object_level,1,change the man's shirt to blue,0.004997740885906806
+000000546475.jpg,object_level,2,remove his watch,0.005148913378199426
+000000546475.jpg,object_level,3,add a hat on the baby,1.1686558153949016e-17
+000000546475.jpg,object_level,4,change the baby's outfit color to pink,0.008000802630813124
+000000546475.jpg,object_level,cumulative,,0.018147456894919367
+000000546475.jpg,global,1,"make the lighting warmer, like golden hour",0.004797003488538802
+000000546475.jpg,global,2,turn the photo into a black and white photo,0.019369188877495547
+000000546475.jpg,global,3,make it look like an old vintage photograph,0.0017643467254356898
+000000546475.jpg,global,4,make the room look brighter,0.0
+000000546475.jpg,global,cumulative,,0.02593053909147004
+000000179112.jpg,object_level,1,change her top to a blue top,0.0304995064910272
+000000179112.jpg,object_level,2,remove the tattoo on her arm,0.0342277699467611
+000000179112.jpg,object_level,3,add sunglasses on her head,0.010951655698518858
+000000179112.jpg,object_level,4,change the phone color to white,0.004954834016122079
+000000179112.jpg,object_level,cumulative,,0.08063376615242925
+000000179112.jpg,global,1,"make the lighting warmer, like golden hour",0.04397731689006583
+000000179112.jpg,global,2,turn the photo into a black and white photo,0.06693375423642077
+000000179112.jpg,global,3,make it look like an old vintage photograph,0.03518205133731586
+000000179112.jpg,global,4,make the wall color light blue,0.0066711502482136925
+000000179112.jpg,global,cumulative,,0.15276427271201615
+000000001503.jpg,object_level,1,change the desk color to dark wood,0.00875161688524551
+000000001503.jpg,object_level,2,remove the mouse next to the keyboard,0.005967752564439503
+000000001503.jpg,object_level,3,add a coffee mug on the desk,0.0024017565201863568
+000000001503.jpg,object_level,4,change the monitor's screen content to a photo of a beach,0.009567365808243748
+000000001503.jpg,object_level,cumulative,,0.02668849177811512
+000000001503.jpg,global,1,"make the room lighting dimmer, like night time",0.0036921047908178646
+000000001503.jpg,global,2,"make the whole scene look retro, like an old photograph",-3.3306690738754695e-17
+000000001503.jpg,global,3,add warm sunset light through the blinds,0.006799242208293944
+000000001503.jpg,global,4,make it look like a sketch drawing,0.0010963303181778254
+000000001503.jpg,global,cumulative,,0.0115876773172896
+000000273760.jpg,object_level,1,change his outfit to red,0.0124705060747719
+000000273760.jpg,object_level,2,change the tennis racket's strings to yellow,0.06613309853505314
+000000273760.jpg,object_level,3,remove the headband,0.018558177847179804
+000000273760.jpg,object_level,4,add a wristband on his other wrist,0.0006743758447367043
+000000273760.jpg,object_level,cumulative,,0.09783615830174155
+000000273760.jpg,global,1,make it look like a night match under stadium lights,0.0018814291607645113
+000000273760.jpg,global,2,make it a rainy match,0.0003194377734991409
+000000273760.jpg,global,3,turn the photo into a black and white photo,9.341914067853815e-05
+000000273760.jpg,global,4,add golden sunset lighting,0.0013299352484979336
+000000273760.jpg,global,cumulative,,0.003624221323440124
+000000206579.jpg,object_level,1,change the cake's frosting color to blue,0.005297124211291874
+000000206579.jpg,object_level,2,remove the lit candles,0.004453441750474574
+000000206579.jpg,object_level,3,add a stack of birthday presents on the table,0.0006910313931552059
+000000206579.jpg,object_level,4,change the man's shirt to red,0.005936549303055122
+000000206579.jpg,object_level,cumulative,,0.016378146657976773
+000000206579.jpg,global,1,make the room lighting brighter,0.0149492371184331
+000000206579.jpg,global,2,turn the photo into a black and white photo,0.004438386719544423
+000000206579.jpg,global,3,make it look like an old vintage photograph,1.1686558153949016e-17
+000000206579.jpg,global,4,add warm golden lighting,0.00294916808140116
+000000206579.jpg,global,cumulative,,0.022336791919378693
+000000447187.jpg,object_level,1,change the batter's jersey to blue,0.0023787026558656017
+000000447187.jpg,object_level,2,change the catcher's gear to red,0.0010999957598146351
+000000447187.jpg,object_level,3,remove the umpire,0.012237825088744495
+000000447187.jpg,object_level,4,add a scoreboard in the background,0.0013147613888214982
+000000447187.jpg,object_level,cumulative,,0.017031284893246228
+000000447187.jpg,global,1,make it a night game under stadium lights,0.002280836405428943
+000000447187.jpg,global,2,make it a rainy game,0.001641718818641861
+000000447187.jpg,global,3,turn the photo into a black and white photo,0.0007853891417981111
+000000447187.jpg,global,4,add golden sunset lighting,-2.590520390792032e-17
+000000447187.jpg,global,cumulative,,0.004707944365868889
+000000154339.jpg,object_level,1,change the gauge needle color to white,0.010648013426575367
+000000154339.jpg,object_level,2,remove the smaller gauge on the right,0.0025768850425291466
+000000154339.jpg,object_level,3,add rust texture on the pipes,-1.1686558153949016e-17
+000000154339.jpg,object_level,4,change the lighting color to green,0.0019456835443720495
+000000154339.jpg,object_level,cumulative,,0.01517058201347655
+000000154339.jpg,global,1,make it daylight instead of dark,0.00393691869556096
+000000154339.jpg,global,2,turn the photo into a black and white photo,0.0008044133760657576
+000000154339.jpg,global,3,make it look like a painting,0.0017037611020812517
+000000154339.jpg,global,4,"add a warm, cozy atmosphere",0.008790972358153277
+000000154339.jpg,global,cumulative,,0.015236065531861246
+000000168337.jpg,object_level,1,change the fire hydrant color to yellow,0.004865047717777187
+000000168337.jpg,object_level,2,change the woman's coat to blue,0.001917057446167329
+000000168337.jpg,object_level,3,"remove the ""STAR"" sign",0.0
+000000168337.jpg,object_level,4,add a bicycle leaning against the building,0.0
+000000168337.jpg,object_level,cumulative,,0.006782105163944516
+000000168337.jpg,global,1,make it a rainy day,-7.93016446160826e-18
+000000168337.jpg,global,2,make it look like nighttime,3.828355257328126e-18
+000000168337.jpg,global,3,turn the photo into a black and white photo,0.0010086148336917336
+000000168337.jpg,global,4,add golden sunset lighting,4.440892098500626e-18
+000000168337.jpg,global,cumulative,,0.0010086148336917338
+000000460929.jpg,object_level,1,change the hot dog bun color to darker brown,0.009048845877229058
+000000460929.jpg,object_level,2,change the soda bottle to a red bottle,0.00525765902188329
+000000460929.jpg,object_level,3,remove the foil wrapping,0.005966384120350406
+000000460929.jpg,object_level,4,add ketchup on the hot dog,0.04973841979554742
+000000460929.jpg,object_level,cumulative,,0.07001130881501016
+000000460929.jpg,global,1,make the lighting brighter and warmer,0.002552573384306655
+000000460929.jpg,global,2,turn the photo into a black and white photo,0.00015012473591726995
+000000460929.jpg,global,3,make it look like an old vintage photograph,-3.416070845000482e-17
+000000460929.jpg,global,4,make it look like a rainy day outside,0.014806172082384526
+000000460929.jpg,global,cumulative,,0.017508870202608415
+000000407298.jpg,object_level,1,change the boy's shirt to red,0.0061423694512999175
+000000407298.jpg,object_level,2,change the baseball to a softer yellow softball,0.004111962825462556
+000000407298.jpg,object_level,3,remove the stitching detail text on the glove,0.0001941518237575268
+000000407298.jpg,object_level,4,add a cap on the boy's head,0.06583451693920604
+000000407298.jpg,object_level,cumulative,,0.07628300103972604
+000000407298.jpg,global,1,make it an overcast cloudy day,0.006080356397044548
+000000407298.jpg,global,2,make it look like golden sunset lighting,0.00019973496353229626
+000000407298.jpg,global,3,turn the photo into a black and white photo,0.00024977925224385525
+000000407298.jpg,global,4,make it look like an old vintage photograph,6.424816729673381e-05
+000000407298.jpg,global,cumulative,,0.006594118780117434
+000000526197.jpg,object_level,1,change the middle donut's glaze to chocolate,9.516197353929913e-18
+000000526197.jpg,object_level,2,remove the passion fruit donut on the left,0.002975290313552709
+000000526197.jpg,object_level,3,add a fourth donut plate,1.5419764230904953e-17
+000000526197.jpg,object_level,4,change the price signs' text color to red,3.0839528461809902e-18
+000000526197.jpg,object_level,cumulative,,0.0029752903135527374
+000000526197.jpg,global,1,"make the lighting warmer, like golden hour",0.0004048661507472819
+000000526197.jpg,global,2,turn the photo into a black and white photo,0.002377051001099062
+000000526197.jpg,global,3,make it look like an old vintage photograph,0.0013057777274132958
+000000526197.jpg,global,4,"add a cozy, cafe atmosphere",0.00014306974575084563
+000000526197.jpg,global,cumulative,,0.004230764625010485
+000000482735.jpg,object_level,1,change the surfer's wetsuit color to blue,0.0
+000000482735.jpg,object_level,2,remove the whitewash foam spray,0.04716662884058814
+000000482735.jpg,object_level,3,add a seagull flying above,0.0007079754885388293
+000000482735.jpg,object_level,4,change the surfboard color to yellow,0.008727674895079885
+000000482735.jpg,object_level,cumulative,,0.05660227922420685
+000000482735.jpg,global,1,make it a cloudy overcast day,0.0
+000000482735.jpg,global,2,make it look like sunrise lighting,2.220446049250313e-16
+000000482735.jpg,global,3,turn the photo into a black and white photo,-1.1102230246251565e-16
+000000482735.jpg,global,4,"add a stormy, dramatic sky",0.0
+000000482735.jpg,global,cumulative,,1.1102230246251565e-16
+000000274219.jpg,object_level,1,change the bow tie to a striped tie,0.03847114548599701
+000000274219.jpg,object_level,2,remove the mustache,0.010945172954399724
+000000274219.jpg,object_level,3,add glasses on the man,0.016355070219120728
+000000274219.jpg,object_level,4,change his hair color to darker,0.000251568802029023
+000000274219.jpg,object_level,cumulative,,0.06602295746154647
+000000274219.jpg,global,1,make the whole photo colorful instead of black and white,6.344131569286608e-17
+000000274219.jpg,global,2,turn the photo into a warm sepia tone,2.7755575615628914e-17
+000000274219.jpg,global,3,make it look like a modern photograph,2.7755575615628914e-17
+000000274219.jpg,global,4,add a blurred background,2.7755575615628914e-17
+000000274219.jpg,global,cumulative,,1.4670804253975283e-16
+000000270122.jpg,object_level,1,change the surfer's outfit color to red,0.0039045859951453987
+000000270122.jpg,object_level,2,remove the watermark text,-1.959217102279688e-17
+000000270122.jpg,object_level,3,add a second surfer in the background,0.00014699325849984766
+000000270122.jpg,object_level,4,change the surfboard color to orange,0.0011990873368680544
+000000270122.jpg,object_level,cumulative,,0.005250666590513282
+000000270122.jpg,global,1,make it a sunny clear day,0.0010955982871479614
+000000270122.jpg,global,2,make it look like sunset lighting,-1.3877787807814457e-17
+000000270122.jpg,global,3,turn the photo into a black and white photo,0.002714857994242122
+000000270122.jpg,global,4,"add a stormy, dramatic sky",9.9186228626591e-06
+000000270122.jpg,global,cumulative,,0.0038203749042527288
