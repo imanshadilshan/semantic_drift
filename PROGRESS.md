@@ -4,7 +4,7 @@ Overall status for the semantic-drift research project. Following the 30-day tim
 [`Research Proposal/research_proposal_semantic_drift.md`](Research%20Proposal/research_proposal_semantic_drift.md) (Section 8), worked in order rather than jumping straight to code.
 For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation/PROGRESS.md).
 
-## Status: Days 1-15 complete, verified, and spot-checked; Day 16-19 (mitigations) written, ready to run on Colab
+## Status: Days 1-23 complete — full pipeline run, both mitigations scored, statistical analysis done
 
 ## Done
 - **Repo structure**: `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/` (gitignored PDFs), `Implementation/`, `Final Paper/`.
@@ -25,8 +25,10 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
   - First real Colab run of `region_locking` crashed immediately with a `TypeError` in `PIL.Image.paste()` — SAM's own box coordinates are floats, and `paste()` (unlike `crop()`) doesn't tolerate that. Fixed at the source in `get_region_boxes()`; the local mocked tests hadn't caught it because the mocks used plain ints instead of matching SAM's real float output. Added regression tests that mock SAM's float behavior specifically.
   - **Second run completed cleanly: 120/120 chains, both strategies. Headline result — mean cumulative drift: baseline 0.293 → region_locking 0.039 (86.8% reduction) → masked_conditioning 0.085 (71.1% reduction).** Both mitigations work, and by a wide margin. Visual spot-check on the baseline's worst chain (the collapsed baseball-glove photo) confirmed the numbers are real: region_locking preserved it almost perfectly; masked_conditioning handled 3 of 4 steps well but hallucinated an unrelated scene on the "add a cap" step. Traced this precisely: for that step, CLIP's target-region identification degenerated to a box covering 99.6% of the frame (the known "add instruction" limitation, since there's nothing pre-existing to match "a cap" against) — meaning masked_conditioning's crop-based constraint gave no real protection for that one step. Worth stating in the write-up: both mitigations are only as good as target-region identification, which has a known weak spot for "add" instructions. See `Implementation/PROGRESS.md` for full detail.
 
+- **Day 22-23 — Statistical analysis**: `src/stats.py` (paired t-test + Wilcoxon) and `scripts/analyze_results.py` run over all three CSVs. **RQ3 (mitigation effectiveness) strongly confirmed**: region_locking 89.1% drift reduction, masked_conditioning 68.6%, both p<0.0001, holds by chain type too. **H2 is not supported — reversed, in fact**: region_locking significantly outperforms masked_conditioning (p<0.0001), the opposite of what was predicted; likely because masked_conditioning's padding margin gets counted as drift by the box-based metric. **H1 is not supported either**: no consecutive step transition is significant, and the one significant comparison found (step 1 vs step 4, p=0.012) runs backwards — step 4 shows *less* drift, most likely because a chain that collapses early has less room left to register as "further changed." Both are real, useful findings for the write-up, not just failed predictions. See `Implementation/PROGRESS.md` for full statistical detail.
+
 ## Next
-- **Day 22-23**: `stats.py` — paired significance tests comparing baseline vs. each mitigation, broken down by chain type and step position.
+- **Day 26-28**: full write-up — literature review, dataset, baseline + 2 mitigations, and real (if partly unexpected) answers to RQ1-RQ3 are all in place.
 
 ## Blockers
 - None.
