@@ -1,6 +1,6 @@
 # Progress
 
-## Status: Days 1-23 complete — full pipeline run, mitigations scored, statistical analysis done
+## Status: Days 1-23 complete; Day 24-25 (optional human eval) tool built and published, awaiting peer responses
 
 ## Done
 - Repo scaffolding: folder structure under `Implementation/` (src, tests, data, configs, notebooks, results, human_eval).
@@ -47,10 +47,16 @@
   - **H2 is NOT supported — data shows the opposite direction.** The proposal predicted masked_conditioning would out-perform region_locking on drift reduction. Actual result: region_locking is *significantly* better (head-to-head p<0.0001, 0.032 vs 0.092 mean). Likely mechanistic explanation: masked_conditioning edits a padded crop (target box + 32px context margin) but the drift score only excludes the raw box, so its own padding ring registers as measured drift even when the edit there is benign — region_locking's hard revert has no such margin. Worth stating explicitly in the write-up: this may be an artifact of how padding interacts with a box-based metric, not proof that region_locking produces better-looking edits (the visual spot-check showed region_locking has its own seam artifacts too).
   - **H1 is NOT supported, and the significant result found runs the opposite direction.** No single consecutive step transition is significant (1→2 p=0.85, 2→3 p=0.33, 3→4 p=0.47 — no detectable escalation at any point). But comparing endpoints directly, step 1 vs step 4 IS significant (p=0.012 t-test, p=0.006 Wilcoxon) — with step 4 *lower* than step 1 (0.080 → 0.066), the reverse of H1's "later edits show more collateral damage." Best explanation, consistent with the baseball-glove hero example: a chain that collapses catastrophically early has less room left to register as "further changed" by a CLIP-similarity metric in later steps — a measurement ceiling effect from front-loaded failures, not evidence that later edits are actually gentler. This needs an honest paragraph in Discussion/Limitations, not a confirmed-or-hidden framing either way.
 
+- **Day 24-25 — Human perceptual check**: built as an interactive page rather than a spreadsheet. `scripts/prepare_human_eval.py` stratified-samples 15 chains across the drift score distribution (5 low/5 mid/5 high tertile, seed 42) from `baseline_drift_scores.csv`, and exports `human_eval/rating_data.json` — original + baseline-final + region_locking-final images per chain, resized 512x512 and re-encoded as JPEG q82 (~2.9MB total for all 15 sets, vs. ~20MB as PNGs — needed to fit the artifact's 16MB limit). `scripts/human_eval_template.html` + `scripts/build_human_eval_page.py` combine that data into a single self-contained page.
+  - Each rater sees the original plus two edits labeled "A" and "B" — condition-to-label mapping is randomized per chain per page load (blinding which is baseline vs. mitigated) and recorded in the export so it can be decoded later.
+  - Declared the `downloads` capability rather than a live-aggregating `artifact` publish: raters may not have edit access to a shared artifact, and `downloads` sidesteps that entirely — each rater downloads their own completed ratings as a small JSON file to send back, no shared-write races to handle.
+  - Published: https://claude.ai/code/artifact/67558a09-516d-42c3-a783-e3e7eaf18ebb — share this link with 3-5 peers, collect their downloaded `human_eval_<name>.json` files into `human_eval/`.
+  - **Not yet analyzed** — waiting on actual responses. Once a few come in, compare each rater's mean rating per condition (baseline vs. region_locking) against this project's own automated scores for the same 15 chains, as the sanity check Section 5.5 calls for.
+
 ## Next
+- **You**: share the human-eval link with 3-5 peers (~10-15 min each), collect their downloaded JSON files into `human_eval/`.
 - **Day 20-21** (stretch, optional): attention-restricted editing — skip without risk to the core deliverable if time is tight, per the proposal's own scoping. Given H2 already has a clear, statistically-grounded answer without it, low priority.
-- **Day 24-25** (optional): human perceptual check — 3-5 raters on ~15 image pairs, as a sanity check against the automated score, per Section 5.5.
-- **Day 26-28**: full write-up. Everything needed is now in place: literature review, dataset, baseline + 2 mitigations scored, and the real statistical answers to RQ1-RQ3 (including two hypotheses that didn't pan out as predicted — those are findings too, not failures to hide).
+- **Day 26-28**: full write-up. Everything needed is now in place: literature review, dataset, baseline + 2 mitigations scored, real statistical answers to RQ1-RQ3 (including two hypotheses that didn't pan out as predicted), and — once responses come in — a human-validation check.
 
 ## Decisions / notes
 - Implementation code lives in `Implementation/` (sibling to `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/`, `Final Paper/`), not at the repo root.

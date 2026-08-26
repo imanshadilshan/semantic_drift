@@ -4,7 +4,7 @@ Overall status for the semantic-drift research project. Following the 30-day tim
 [`Research Proposal/research_proposal_semantic_drift.md`](Research%20Proposal/research_proposal_semantic_drift.md) (Section 8), worked in order rather than jumping straight to code.
 For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation/PROGRESS.md).
 
-## Status: Days 1-23 complete — full pipeline run, both mitigations scored, statistical analysis done
+## Status: Days 1-23 complete; Day 24-25 human-eval tool built and published, awaiting peer responses
 
 ## Done
 - **Repo structure**: `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/` (gitignored PDFs), `Implementation/`, `Final Paper/`.
@@ -27,7 +27,10 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 
 - **Day 22-23 — Statistical analysis**: `src/stats.py` (paired t-test + Wilcoxon) and `scripts/analyze_results.py` run over all three CSVs. **RQ3 (mitigation effectiveness) strongly confirmed**: region_locking 89.1% drift reduction, masked_conditioning 68.6%, both p<0.0001, holds by chain type too. **H2 is not supported — reversed, in fact**: region_locking significantly outperforms masked_conditioning (p<0.0001), the opposite of what was predicted; likely because masked_conditioning's padding margin gets counted as drift by the box-based metric. **H1 is not supported either**: no consecutive step transition is significant, and the one significant comparison found (step 1 vs step 4, p=0.012) runs backwards — step 4 shows *less* drift, most likely because a chain that collapses early has less room left to register as "further changed." Both are real, useful findings for the write-up, not just failed predictions. See `Implementation/PROGRESS.md` for full statistical detail.
 
+- **Day 24-25 — Human perceptual check**: built as an interactive Artifact page (not a spreadsheet) — 15 chains stratified across the drift score range, each showing the original photo plus baseline and region_locking edits blind-labeled A/B, with a 1-5 unintended-change rating per edit. Each rater downloads their own completed ratings as a JSON file (used `downloads` capability rather than a shared-write artifact, since raters may not have edit access). Published: https://claude.ai/code/artifact/67558a09-516d-42c3-a783-e3e7eaf18ebb. Awaiting responses from 3-5 peers. See `Implementation/PROGRESS.md` for build detail.
+
 ## Next
+- **You**: share the human-eval link with 3-5 peers, collect their downloaded response files into `Implementation/human_eval/`.
 - **Day 26-28**: full write-up — literature review, dataset, baseline + 2 mitigations, and real (if partly unexpected) answers to RQ1-RQ3 are all in place.
 
 ## Blockers

@@ -1,0 +1,474 @@
+<title>Drift Perception Check</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,440;9..144,560;9..144,680&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --surface: #FFFDF9;
+    --border: #E6DBC8;
+    --border-strong: #D3C4A8;
+    --text: #2B2418;
+    --text-muted: #85795F;
+    --accent: #C05A22;
+    --accent-strong: #9E4718;
+    --accent-contrast: #FFFBF3;
+    --success: #5E7A54;
+    --success-bg: #E8EEDF;
+    --focus-ring: #C05A22;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #18140D;
+      --surface: #211B12;
+      --border: #3B3222;
+      --border-strong: #4E4430;
+      --text: #EFE7D6;
+      --text-muted: #A79A80;
+      --accent: #E38948;
+      --accent-strong: #F0A15F;
+      --accent-contrast: #1A1409;
+      --success: #8CAD7E;
+      --success-bg: #29331F;
+      --focus-ring: #E38948;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #18140D;
+    --surface: #211B12;
+    --border: #3B3222;
+    --border-strong: #4E4430;
+    --text: #EFE7D6;
+    --text-muted: #A79A80;
+    --accent: #E38948;
+    --accent-strong: #F0A15F;
+    --accent-contrast: #1A1409;
+    --success: #8CAD7E;
+    --success-bg: #29331F;
+    --focus-ring: #E38948;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0 20px 80px;
+  }
+
+  .wrap { max-width: 860px; margin: 0 auto; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .topbar .mark {
+    font-family: "Fraunces", serif;
+    font-weight: 560;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .topbar .progress {
+    font-family: "IBM Plex Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .topbar .progress b { color: var(--accent); font-weight: 500; }
+
+  header.intro { padding: 44px 0 8px; }
+  h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 680;
+    font-optical-sizing: auto;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 18px;
+  }
+  .lede {
+    font-size: 1.05rem;
+    color: var(--text);
+    max-width: 62ch;
+    margin: 0 0 22px;
+  }
+  .howto {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin: 0 0 28px;
+  }
+  .howto p { margin: 0 0 10px; }
+  .howto p:last-child { margin-bottom: 0; }
+  .howto .eg { color: var(--text-muted); font-size: 0.95rem; }
+  .howto .eg b { color: var(--text); font-weight: 500; }
+
+  label.field-label {
+    display: block;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  input[type="text"] {
+    width: 100%;
+    max-width: 320px;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  input[type="text"]:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 1px;
+  }
+
+  .chain {
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+  }
+  .chain-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .chain-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .chain-title {
+    font-family: "Fraunces", serif;
+    font-weight: 560;
+    font-size: 1.15rem;
+  }
+
+  .frames {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  figure.frame { margin: 0; }
+  figure.frame img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--border-strong);
+    border-radius: 3px;
+    background: var(--border);
+  }
+  figure.frame figcaption {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .ratings { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 620px) {
+    .frames { grid-template-columns: 1fr 1fr 1fr; }
+    .ratings { grid-template-columns: 1fr; }
+  }
+
+  .rating-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 14px 16px 16px;
+  }
+  .rating-block .which {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 10px;
+  }
+  .scale { display: flex; gap: 6px; margin-bottom: 8px; }
+  .scale label {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+  }
+  .scale input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  .scale .pip {
+    display: block;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 8px 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    background: var(--bg);
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+  }
+  .scale input[type="radio"]:checked + .pip {
+    background: var(--accent);
+    border-color: var(--accent-strong);
+    color: var(--accent-contrast);
+  }
+  .scale input[type="radio"]:focus-visible + .pip {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  .anchors {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .anchors span:last-child { text-align: right; max-width: 45%; }
+  .anchors span:first-child { max-width: 45%; }
+
+  .finish {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .finish .count {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  .finish .count b { color: var(--text); }
+  button.submit {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 13px 28px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button.submit:hover { background: var(--accent-strong); }
+  button.submit:disabled {
+    background: var(--border-strong);
+    color: var(--text-muted);
+    cursor: not-allowed;
+  }
+  button.submit:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+  .status {
+    margin-top: 16px;
+    font-size: 0.92rem;
+  }
+  .status.ok { color: var(--success); }
+  .status.err { color: var(--accent-strong); }
+
+  textarea.fallback {
+    width: 100%;
+    margin-top: 14px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 10px;
+    display: none;
+  }
+</style>
+
+<div class="wrap">
+  <div class="topbar">
+    <span class="mark">Drift Perception Check</span>
+    <span class="progress"><b id="doneCount">0</b>/15 rated</span>
+  </div>
+
+  <header class="intro">
+    <h1>Does this look like more changed than you asked for?</h1>
+    <p class="lede">
+      Fifteen photos were each edited by an AI in two different ways. For every set, you'll see the
+      original photo and two edited versions, labeled A and B. Your job: judge how much
+      <em>unrelated</em> stuff changed in each edit — not whether the edit itself looks good.
+    </p>
+    <div class="howto">
+      <p><b>Rate each edit on its own</b>, comparing it only to the original photo above it.</p>
+      <p class="eg">
+        <b>Example:</b> if the request was "add a bird" and a bird appears — that's the point, ignore it.
+        But if the sky also changed color, or someone's face looks different, or the lighting shifted
+        across the whole photo — that's unintended change. Score it 1 (none) to 5 (extreme).
+      </p>
+    </div>
+    <label class="field-label" for="raterName">Your name or initials (optional)</label>
+    <input type="text" id="raterName" placeholder="e.g. Priya" autocomplete="off">
+  </header>
+
+  <div id="chains"></div>
+
+  <div class="finish">
+    <div class="count"><b id="doneCount2">0</b> of 15 sets rated</div>
+    <button class="submit" id="submitBtn" disabled>Download my ratings</button>
+    <div class="status" id="status"></div>
+    <textarea class="fallback" id="fallback" readonly></textarea>
+  </div>
+</div>
+
+<script id="chain-data" type="application/json">/*__CHAIN_DATA_JSON__*/</script>
+
+<script>
+(function () {
+  const chains = JSON.parse(document.getElementById('chain-data').textContent);
+  const container = document.getElementById('chains');
+  const ratings = {};
+
+  const assignment = chains.map(() => (Math.random() < 0.5 ? ['baseline_edit', 'mitigated_edit'] : ['mitigated_edit', 'baseline_edit']));
+
+  chains.forEach((chain, i) => {
+    ratings[chain.id] = { a: null, b: null };
+    const [condA, condB] = assignment[i];
+
+    const el = document.createElement('div');
+    el.className = 'chain';
+    el.innerHTML = `
+      <div class="chain-head">
+        <span class="chain-num">${String(i + 1).padStart(2, '0')} / 15</span>
+        <span class="chain-title">Set ${i + 1}</span>
+      </div>
+      <div class="frames">
+        <figure class="frame">
+          <img src="data:image/jpeg;base64,${chain.original}" alt="Original photo">
+          <figcaption>Original</figcaption>
+        </figure>
+        <figure class="frame">
+          <img src="data:image/jpeg;base64,${chain[condA]}" alt="Edit A">
+          <figcaption>Edit A</figcaption>
+        </figure>
+        <figure class="frame">
+          <img src="data:image/jpeg;base64,${chain[condB]}" alt="Edit B">
+          <figcaption>Edit B</figcaption>
+        </figure>
+      </div>
+      <div class="ratings">
+        ${ratingBlock(chain.id, 'a', 'Edit A')}
+        ${ratingBlock(chain.id, 'b', 'Edit B')}
+      </div>
+    `;
+    container.appendChild(el);
+  });
+
+  function ratingBlock(chainId, side, label) {
+    let pips = '';
+    for (let v = 1; v <= 5; v++) {
+      pips += `
+        <label>
+          <input type="radio" name="${chainId}_${side}" value="${v}">
+          <span class="pip">${v}</span>
+        </label>`;
+    }
+    return `
+      <div class="rating-block">
+        <div class="which">${label}</div>
+        <div class="scale">${pips}</div>
+        <div class="anchors"><span>No unintended change</span><span>Extreme unintended change</span></div>
+      </div>`;
+  }
+
+  container.addEventListener('change', (e) => {
+    const input = e.target;
+    if (input.type !== 'radio') return;
+    const [chainId, side] = input.name.split(/_(?=[ab]$)/);
+    ratings[chainId][side] = Number(input.value);
+    updateProgress();
+  });
+
+  function updateProgress() {
+    const done = Object.values(ratings).filter((r) => r.a !== null && r.b !== null).length;
+    document.getElementById('doneCount').textContent = done;
+    document.getElementById('doneCount2').textContent = done;
+    document.getElementById('submitBtn').disabled = done === 0;
+  }
+
+  document.getElementById('submitBtn').addEventListener('click', async () => {
+    const statusEl = document.getElementById('status');
+    const fallbackEl = document.getElementById('fallback');
+    const done = Object.values(ratings).filter((r) => r.a !== null && r.b !== null).length;
+
+    if (done < 15) {
+      statusEl.className = 'status err';
+      statusEl.textContent = `Only ${done} of 15 sets rated so far — you can still download now, or go back and finish the rest first.`;
+    }
+
+    const payload = {
+      rater_name: document.getElementById('raterName').value.trim() || null,
+      submitted_at: new Date().toISOString(),
+      ratings: chains.map((chain, i) => {
+        const [condA, condB] = assignment[i];
+        const r = ratings[chain.id];
+        return {
+          chain_id: chain.id,
+          image_id: chain.image_id,
+          chain_type: chain.chain_type,
+          edit_a_condition: condA,
+          edit_a_rating: r.a,
+          edit_b_condition: condB,
+          edit_b_rating: r.b,
+        };
+      }),
+    };
+
+    const json = JSON.stringify(payload, null, 2);
+    const filename = `human_eval_${(payload.rater_name || 'anonymous').replace(/[^a-z0-9]+/gi, '_').toLowerCase()}.json`;
+
+    try {
+      const downloads = await Promise.race([
+        window.claude && window.claude.use ? window.claude.use('downloads') : Promise.resolve(null),
+        new Promise((resolve) => setTimeout(() => resolve(null), 10500)),
+      ]);
+      if (!downloads) throw new Error('unavailable');
+
+      await downloads.save({ filename, data: json });
+      statusEl.className = 'status ok';
+      statusEl.textContent = `Saved as ${filename} — please send that file back. Thank you!`;
+      fallbackEl.style.display = 'none';
+    } catch (err) {
+      const declined = err && err.code === 'declined';
+      statusEl.className = 'status err';
+      statusEl.textContent = declined
+        ? 'Download cancelled. Your ratings are shown below — copy all of it and send it back instead.'
+        : "Couldn't trigger a download here. Your ratings are shown below — copy all of it and send it back instead.";
+      fallbackEl.value = json;
+      fallbackEl.style.display = 'block';
+      fallbackEl.focus();
+      fallbackEl.select();
+    }
+  });
+})();
+</script>
