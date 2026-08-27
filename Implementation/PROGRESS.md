@@ -1,6 +1,6 @@
 # Progress
 
-## Status: Days 1-23 complete; Day 24-25 (optional human eval) tool built and published, awaiting peer responses
+## Status: Days 1-23 complete; Day 24-25 (optional human eval) built but skipped by choice; ready for Day 26-28 write-up
 
 ## Done
 - Repo scaffolding: folder structure under `Implementation/` (src, tests, data, configs, notebooks, results, human_eval).
@@ -51,12 +51,11 @@
   - Each rater sees the original plus two edits labeled "A" and "B" — condition-to-label mapping is randomized per chain per page load (blinding which is baseline vs. mitigated) and recorded in the export so it can be decoded later.
   - Declared the `downloads` capability rather than a live-aggregating `artifact` publish: raters may not have edit access to a shared artifact, and `downloads` sidesteps that entirely — each rater downloads their own completed ratings as a small JSON file to send back, no shared-write races to handle.
   - Published: https://claude.ai/code/artifact/67558a09-516d-42c3-a783-e3e7eaf18ebb — share this link with 3-5 peers, collect their downloaded `human_eval_<name>.json` files into `human_eval/`.
-  - **Not yet analyzed** — waiting on actual responses. Once a few come in, compare each rater's mean rating per condition (baseline vs. region_locking) against this project's own automated scores for the same 15 chains, as the sanity check Section 5.5 calls for.
+  - **Skipped by choice, not abandoned**: decided not to send this out to peers. The tool stays built and published (link above still works) in case there's time for it later, but the write-up proceeds without human-validation data. This is explicitly allowed for — Section 10 of the proposal already frames it as optional ("if time allows") and separately flags CLIP-based similarity as an imperfect proxy for human-perceived change; without this check, that limitation should be stated a bit more plainly in the write-up rather than hedged, since there's now no human data to lean on as a partial mitigation.
 
 ## Next
-- **You**: share the human-eval link with 3-5 peers (~10-15 min each), collect their downloaded JSON files into `human_eval/`.
 - **Day 20-21** (stretch, optional): attention-restricted editing — skip without risk to the core deliverable if time is tight, per the proposal's own scoping. Given H2 already has a clear, statistically-grounded answer without it, low priority.
-- **Day 26-28**: full write-up. Everything needed is now in place: literature review, dataset, baseline + 2 mitigations scored, real statistical answers to RQ1-RQ3 (including two hypotheses that didn't pan out as predicted), and — once responses come in — a human-validation check.
+- **Day 26-28**: full write-up. Everything needed is now in place: literature review, dataset, baseline + 2 mitigations scored, and real statistical answers to RQ1-RQ3 (including two hypotheses that didn't pan out as predicted). No human-validation data — see the limitation note above.
 
 ## Decisions / notes
 - Implementation code lives in `Implementation/` (sibling to `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/`, `Final Paper/`), not at the repo root.
