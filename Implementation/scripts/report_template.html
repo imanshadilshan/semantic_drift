@@ -1,0 +1,683 @@
+<title>Semantic Drift Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --bg: #F5F6F8;
+    --surface: #FFFFFF;
+    --surface-alt: #EBEEF2;
+    --border: #DBE0E6;
+    --text: #1B222C;
+    --text-muted: #656D7A;
+    --accent: #C8472B;
+    --accent-soft: #F3E1DC;
+    --support: #2F6B4C;
+    --support-soft: #DEEAE2;
+    --focus-ring: #C8472B;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12151A;
+      --surface: #191D24;
+      --surface-alt: #20252E;
+      --border: #2B313C;
+      --text: #E7EAF0;
+      --text-muted: #939BAB;
+      --accent: #E8684A;
+      --accent-soft: #3A241E;
+      --support: #6FAE8A;
+      --support-soft: #1D2A22;
+      --focus-ring: #E8684A;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12151A;
+    --surface: #191D24;
+    --surface-alt: #20252E;
+    --border: #2B313C;
+    --text: #E7EAF0;
+    --text-muted: #939BAB;
+    --accent: #E8684A;
+    --accent-soft: #3A241E;
+    --support: #6FAE8A;
+    --support-soft: #1D2A22;
+    --focus-ring: #E8684A;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0 24px 100px;
+  }
+
+  .page { max-width: 760px; margin: 0 auto; }
+
+  h1, h2, h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    text-wrap: balance;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  header.masthead { padding: 56px 0 28px; border-bottom: 1px solid var(--border); }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  h1.title {
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .standfirst {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    max-width: 62ch;
+    margin-bottom: 30px;
+  }
+
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .stat {
+    background: var(--surface);
+    padding: 18px 16px;
+  }
+  .stat .num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .stat .cap {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  @media (max-width: 560px) {
+    .stat-strip { grid-template-columns: 1fr; }
+  }
+
+  nav.toc {
+    margin: 34px 0 0;
+    padding: 18px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  nav.toc .toc-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 20px;
+  }
+  nav.toc a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  nav.toc a:hover { color: var(--accent); }
+  nav.toc .n {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--text-muted);
+    margin-right: 6px;
+  }
+  @media (max-width: 560px) {
+    nav.toc ol { grid-template-columns: 1fr; }
+  }
+
+  section { padding: 46px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .sec-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  h2.sec-title { font-size: 1.55rem; font-weight: 600; }
+  h3.sub-title { font-size: 1.18rem; font-weight: 600; margin: 30px 0 14px; }
+
+  p { margin: 0 0 16px; }
+  section > p:last-child, section > div:last-child { margin-bottom: 0; }
+  em { color: var(--text); }
+  strong { font-weight: 600; }
+
+  a.inline-link { color: var(--accent); }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .pill.supported { background: var(--support-soft); color: var(--support); }
+  .pill.reversed { background: var(--accent-soft); color: var(--accent); }
+
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 20px;
+    font-size: 0.95rem;
+  }
+  .table-wrap { overflow-x: auto; }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  td.num, th.num { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; text-align: right; }
+  tr:last-child td { border-bottom: none; }
+  tr.highlight td { color: var(--accent); font-weight: 600; }
+
+  figure { margin: 24px 0; }
+  figure img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .fig-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .fig-grid.of-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 620px) {
+    .fig-grid.of-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  figure .cap {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 6px;
+  }
+  figcaption.fig-title {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+    max-width: 60ch;
+  }
+  figcaption.fig-title b { color: var(--text); font-weight: 600; }
+
+  ul, ol.body-list { padding-left: 1.4em; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+
+  .refs p {
+    margin-bottom: 12px;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .refs em { font-style: italic; color: var(--text); }
+
+  footer {
+    padding: 40px 0 10px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow">Undergraduate Research Report</div>
+    <h1 class="title">Detecting and Mitigating Semantic Drift in Multi-Turn Instruction-Based Image Editing</h1>
+    <p class="standfirst">
+      Instruction-based image editors can follow every individual edit correctly while still drifting
+      further from what a user actually wanted, because nothing measures what happens to the parts of
+      the image nobody asked to change. This report introduces a metric for that drift, runs it across
+      120 real edit chains, and tests two low-cost fixes against it.
+    </p>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">89.1%</div><div class="cap">drift reduction, region-locking (p&lt;0.0001)</div></div>
+      <div class="stat"><div class="num">68.6%</div><div class="cap">drift reduction, masked conditioning (p&lt;0.0001)</div></div>
+      <div class="stat"><div class="num">120</div><div class="cap">edit chains, 60 images × 2 chain types</div></div>
+    </div>
+    <nav class="toc">
+      <div class="toc-label">Contents</div>
+      <ol>
+        <li><a href="#abstract"><span class="n">—</span>Abstract</a></li>
+        <li><a href="#sec1"><span class="n">01</span>Introduction</a></li>
+        <li><a href="#sec2"><span class="n">02</span>Related Work</a></li>
+        <li><a href="#sec3"><span class="n">03</span>Methodology</a></li>
+        <li><a href="#sec4"><span class="n">04</span>Results</a></li>
+        <li><a href="#sec5"><span class="n">05</span>Discussion</a></li>
+        <li><a href="#sec6"><span class="n">06</span>Limitations</a></li>
+        <li><a href="#sec7"><span class="n">07</span>Ethical Considerations</a></li>
+        <li><a href="#sec8"><span class="n">08</span>Conclusion &amp; Future Work</a></li>
+        <li><a href="#refs"><span class="n">—</span>References</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <section id="abstract">
+    <div class="sec-head"><h2 class="sec-title">Abstract</h2></div>
+    <p>
+      Instruction-based image editors such as InstructPix2Pix let users apply a sequence of
+      natural-language edits to an image, but nothing in the standard evaluation toolkit measures what
+      happens to the parts of the image nobody asked to change. This project introduces the
+      <strong>Drift Score</strong>, a model-agnostic metric combining Segment Anything (SAM) region
+      segmentation with CLIP embedding similarity to quantify unintended change after an edit, and uses
+      it to run an empirical study across 120 four-step edit chains (60 COCO images, split evenly
+      between localized object-level edits and broad scene-level edits). Two low-cost mitigation
+      strategies — masked conditioning and region-locking — were implemented and evaluated against an
+      unmitigated baseline. Both mitigations produce large, highly significant reductions in measured
+      drift (region-locking: 89.1%, p &lt; 0.0001; masked conditioning: 68.6%, p &lt; 0.0001), directly
+      supporting RQ3. Two pre-registered hypotheses did not hold: region-locking significantly
+      <em>outperformed</em> masked conditioning rather than the reverse (H2), and drift did not increase
+      across the chain — the only significant step-position effect found ran in the opposite direction
+      of the predicted compounding pattern (H1). Both reversals are explained mechanistically rather
+      than left as unexplained anomalies. The Drift Score, dataset, and full pipeline are released as a
+      reproducible toolkit.
+    </p>
+  </section>
+
+  <section id="sec1">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Introduction</h2></div>
+    <p>
+      Iterative refinement — "make it sunset," then "add a bird," then "remove the fence" — is a
+      natural usage pattern for instruction-based image editors, but it introduces a failure mode that
+      single-step evaluation cannot see: a model can follow every individual instruction correctly while
+      still drifting further and further from the user's actual intent, because nothing constrains it to
+      leave the rest of the image alone. Existing evaluation protocols for these models (CLIP-based
+      instruction-following scores, human preference studies) measure whether the requested change
+      happened, not what else changed as a side effect. This project terms that side effect
+      <strong>semantic drift</strong> and asks three questions: can it be measured automatically (RQ1),
+      does it compound across a chain of edits (RQ2), and can cheap, pretrained-model-only mitigations
+      reduce it (RQ3)?
+    </p>
+    <p>
+      This work was scoped for a single contributor on a 30-day timeline using only pretrained models
+      and free-tier compute (a laptop for development and analysis, Google Colab's free GPU for
+      inference). No model was trained or fine-tuned; the contribution is the measurement methodology
+      and the empirical findings it produces, not a new editing model.
+    </p>
+  </section>
+
+  <section id="sec2">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Related Work</h2></div>
+    <p>
+      This project builds on five established lines of work, detailed further in the standalone
+      literature review accompanying this project.
+    </p>
+    <ul>
+      <li><strong>InstructPix2Pix</strong> (Brooks, Holynski &amp; Efros, CVPR 2023) is the editor
+        evaluated throughout this study. It is trained entirely on synthetically generated (image,
+        instruction, edited-image) triplets, which means it inherits no explicit supervision for
+        "leave everything else untouched" beyond whatever its training data's generation process
+        happened to preserve — the mechanistic reason drift is expected, not merely an empirical
+        curiosity.</li>
+      <li><strong>Latent Diffusion Models</strong> (Rombach et al., CVPR 2022) are the generative
+        backbone underlying InstructPix2Pix and nearly every other model in this review.</li>
+      <li><strong>CLIP</strong> (Radford et al., ICML 2021) supplies the embedding space the Drift
+        Score measures change in, and the text-image similarity signal used to identify which region an
+        instruction targets.</li>
+      <li><strong>Segment Anything</strong> (Kirillov et al., ICCV 2023) supplies the region
+        decomposition without which drift could only be measured at whole-image granularity, blurring
+        out exactly the localized side effects this project targets.</li>
+      <li><strong>Prompt-to-Prompt</strong> (Hertz et al., 2022), <strong>Plug-and-Play</strong>
+        (Tumanyan et al., CVPR 2023), and <strong>MasaCtrl</strong> (Cao et al., ICCV 2023) are
+        generation-time consistency techniques — the closest prior art to this project's mitigation
+        strategies. All three aim to <em>produce</em> a more consistent edit; none measure how much
+        unintended change remains, and none address chains of edits. MasaCtrl's own motivation section
+        states the semantic-drift problem almost exactly, three years before this project, but stops at
+        fixing single edits.</li>
+      <li><strong>MagicBrush</strong> (Zhang et al., NeurIPS 2023) already contains multi-turn edit
+        data, validating this project's 4-step chain design as a realistic usage pattern — but its
+        evaluation protocol only checks whether each turn's <em>target</em> region changed correctly,
+        never how much everything else changed.</li>
+    </ul>
+    <div class="callout">
+      <p><strong>The gap.</strong> No existing work combines segmentation and embedding comparison into
+        a chain-aware measurement of unintended change, and no existing work empirically compares
+        mitigation strategies on that specific axis. This project's contribution is that combination,
+        plus the empirical study it enables.</p>
+    </div>
+  </section>
+
+  <section id="sec3">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Methodology</h2></div>
+
+    <h3 class="sub-title">3.1 The Drift Score</h3>
+    <p>For a single edit step, given the pre-edit image, the post-edit image, and the instruction:</p>
+    <ol class="body-list">
+      <li>Segment the <strong>pre-edit</strong> image with SAM (<code>vit_b</code> checkpoint,
+        <code>points_per_side=16</code>, <code>min_mask_region_area=500</code> — kept modest to fit
+        free-tier Colab memory and time budgets), producing a set of region bounding boxes.</li>
+      <li>Identify the <strong>target region</strong> — the one box the instruction most plausibly
+        refers to — by embedding each region crop and the instruction text with CLIP
+        (<code>clip-vit-base-patch32</code>) and taking the highest cosine similarity.</li>
+      <li>Crop <strong>both</strong> the pre- and post-edit image at the <em>same</em> box coordinates
+        for every non-target region. Segmenting the post-edit image independently would give unrelated
+        region IDs with no correspondence between them — a deliberate design decision, not an
+        oversight.</li>
+      <li>For each non-target region, compute <code>1 − cosine_similarity(CLIP(pre_crop),
+        CLIP(post_crop))</code>. The mean over all non-target regions is that step's Drift Score.</li>
+      <li>A chain's <strong>cumulative Drift Score</strong> is the sum of its per-step scores.</li>
+    </ol>
+
+    <h3 class="sub-title">3.2 Dataset</h3>
+    <p>
+      60 images were sampled from COCO val2017 (seed 42, reproducible), filtered to those with 2-8
+      annotated objects — enough to have both a plausible target and non-target regions without an
+      overly cluttered scene. Each image received two hand-written, per-image (not templated) 4-instruction
+      chains after being individually inspected:
+    </p>
+    <ul>
+      <li><strong>Chain A (object-level)</strong>: localized, single-object edits (e.g., "change the
+        horse's color to black," "remove the striped poles in front of the horse").</li>
+      <li><strong>Chain B (global)</strong>: broad, scene-level edits (e.g., "make it a rainy day,"
+        "add golden sunset lighting").</li>
+    </ul>
+    <p>This produced 120 chains total: 60 object-level and 60 global.</p>
+
+    <h3 class="sub-title">3.3 Pipeline and Models</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Component</th><th>Model</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>Editor</td><td><code>timbrooks/instruct-pix2pix</code></td><td>Executes each instruction, 512×512</td></tr>
+          <tr><td>Segmentation</td><td>SAM <code>vit_b</code> (~375MB)</td><td>Region decomposition for scoring and mitigation</td></tr>
+          <tr><td>Embedding</td><td>CLIP <code>ViT-B/32</code></td><td>Region change measurement + target identification</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      All three are pretrained, publicly available checkpoints, downloaded automatically on first use —
+      no training occurred. Heavy inference (editing, segmentation) ran on Google Colab's GPU tier;
+      drift-score aggregation and statistical analysis ran locally on CPU. Every image, edit chain, and
+      score is committed to the project's git history for reproducibility.
+    </p>
+
+    <h3 class="sub-title">3.4 Mitigation Strategies</h3>
+    <p>Two strategies were implemented, both identifying the target region via the identical SAM+CLIP procedure the Drift Score itself uses:</p>
+    <ul>
+      <li><strong>Region-locking</strong>: runs the edit on the full image as normal, then reverts every
+        pixel outside the target region's box back to the pre-edit image — a post-hoc correction of
+        whatever the model produced.</li>
+      <li><strong>Masked conditioning</strong>: crops down to just the target region (plus a 32-pixel
+        padding margin for context) <em>before</em> generation, runs the edit only on that crop, then
+        pastes the result back — a generation-time constraint, since the model never sees the rest of
+        the image at all.</li>
+    </ul>
+    <p>
+      A third, stretch-goal strategy (attention-restricted editing, informed by Prompt-to-Prompt-style
+      cross-attention control) was scoped as optional and not implemented — RQ3 already has a clear,
+      statistically-supported answer without it.
+    </p>
+
+    <h3 class="sub-title">3.5 Statistical Analysis</h3>
+    <p>
+      Paired t-tests and Wilcoxon signed-rank tests compare cumulative Drift Scores between conditions,
+      pairing by image and chain type. Wilcoxon is treated as the primary test given the small,
+      likely-skewed sample; the t-test is reported alongside it for completeness. 13 of 480 baseline
+      steps (2.7%) could not be scored — SAM occasionally finds too few regions in a heavily stylized
+      pre-edit image for anything to remain once the target region is excluded — and were dropped from
+      pairwise comparisons rather than imputed.
+    </p>
+  </section>
+
+  <section id="sec4">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Results</h2></div>
+
+    <h3 class="sub-title">4.1 RQ1 — Can drift be measured automatically? <span class="pill supported">Supported</span></h3>
+    <p>
+      Qualitative spot-checks across the score range confirm the metric tracks real, visible content
+      preservation.
+    </p>
+    <figure>
+      <div class="fig-grid">
+        <div><img src="{{IMG:surfer_original}}" alt="Original photo of a surfer riding a wave"><div class="cap">Original</div></div>
+        <div><img src="{{IMG:surfer_edited}}" alt="Edited photo, surfboard and wetsuit recolored"><div class="cap">Edited (score 0.082)</div></div>
+      </div>
+      <figcaption class="fig-title">
+        <b>Lowest-scoring baseline chain.</b> Only the requested outfit and surfboard color changed —
+        the wave, spray, and sky are pixel-for-pixel the same scene.
+      </figcaption>
+    </figure>
+    <p>
+      The highest-scoring baseline chain (0.565, a boy holding a baseball glove) is a genuine
+      catastrophic failure: by step 3 the image has collapsed to near-total black after step 2's edit
+      destroyed the original composition, and step 4 edits on top of the wreckage. The score correctly
+      flags this as the single worst chain in the dataset.
+    </p>
+    <figure>
+      <div class="fig-grid of-4">
+        <div><img src="{{IMG:glove_original}}" alt="Original photo of a boy with a baseball glove"><div class="cap">Original</div></div>
+        <div><img src="{{IMG:glove_baseline}}" alt="Baseline edit, collapsed to near black"><div class="cap">Baseline (0.565)</div></div>
+        <div><img src="{{IMG:glove_region_locking}}" alt="Region-locking recovered result"><div class="cap">Region-locking (0.076)</div></div>
+        <div><img src="{{IMG:glove_masked_conditioning}}" alt="Masked conditioning partial result"><div class="cap">Masked cond. (0.180)</div></div>
+      </div>
+      <figcaption class="fig-title">
+        <b>Highest-scoring baseline chain, and both mitigations on the same chain.</b> Discussed further
+        in §4.2 and §5.2.
+      </figcaption>
+    </figure>
+
+    <h3 class="sub-title">4.2 RQ3 — Do the mitigations reduce drift? <span class="pill supported">Supported</span></h3>
+    <p>
+      <strong>Yes, substantially, in every breakdown tested</strong> (Table 1). Both mitigations reduce
+      mean cumulative drift by a wide margin relative to the unmitigated baseline (mean 0.293, range
+      0.082–0.565, n=120), and the effect holds separately for object-level and global chains.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Condition</th><th class="num">Mean</th><th class="num">Reduction</th><th class="num">Wilcoxon p</th></tr></thead>
+        <tbody>
+          <tr><td>Baseline</td><td class="num">0.293</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td>Masked conditioning</td><td class="num">0.092</td><td class="num">68.6%</td><td class="num">&lt;0.0001</td></tr>
+          <tr class="highlight"><td>Region-locking</td><td class="num">0.032</td><td class="num">89.1%</td><td class="num">&lt;0.0001</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap" style="text-align:left; margin-top:-10px;">Table 1. Cumulative Drift Score by condition (n=120).</p>
+    <p>
+      Region-locking also significantly outperforms masked conditioning head-to-head (p &lt; 0.0001).
+      Broken down by chain type, both mitigations work slightly better on global chains than
+      object-level chains (region-locking: 92.2% vs. 86.0% reduction), though both remain highly
+      significant in both subgroups. On the worst-case chain from §4.1: baseline cumulative drift 0.565
+      falls to 0.076 under region-locking and 0.180 under masked conditioning — both large recoveries,
+      visually confirmed above.
+    </p>
+
+    <h3 class="sub-title">4.3 RQ2 — Does drift compound across the chain? <span class="pill reversed">Not supported</span></h3>
+    <p>
+      No consecutive step transition is statistically significant (step 1→2: p=0.85; 2→3: p=0.33; 3→4:
+      p=0.47) — there is no detectable escalation at any single point in the chain. Comparing the two
+      endpoints directly, step 1 vs. step 4 <em>is</em> significant (p=0.012 t-test, p=0.006 Wilcoxon),
+      but with step 4 showing <strong>less</strong> drift (mean 0.066) than step 1 (mean 0.080) — the
+      reverse of the predicted direction.
+    </p>
+  </section>
+
+  <section id="sec5">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Discussion</h2></div>
+
+    <h3 class="sub-title">5.1 H1 did not hold, and the explanation matters</h3>
+    <p>
+      The working hypothesis was that later edits would show progressively more collateral damage
+      because each operates on an already-modified image. The data shows the opposite at the only point
+      where a significant difference exists at all. The most plausible explanation, consistent with the
+      baseball-glove example in §4.1: a chain that collapses catastrophically early has, by construction
+      of a CLIP-similarity metric, very little room left to register as "further changed" in subsequent
+      steps — an image that is already almost entirely black cannot become much more different from its
+      original self than it already is. This is a <strong>measurement ceiling effect masking
+      front-loaded failure</strong>, not evidence that later edits are genuinely gentler. Distinguishing
+      "drift is front-loaded and severe" from "drift doesn't compound" would require a metric sensitive
+      to <em>further</em> degradation of an already-degraded image — a natural direction for follow-up
+      work, not something this project's CLIP-similarity approach can resolve as built.
+    </p>
+
+    <h3 class="sub-title">5.2 H2 reversed, and the reversal has a mechanistic explanation</h3>
+    <p>
+      The prediction was that masked conditioning — a stricter, generation-time constraint — would
+      outperform region-locking's after-the-fact correction, at some cost to edit quality at the
+      boundary. Region-locking instead significantly outperforms masked conditioning on the drift metric
+      itself. The most likely reason is a property of the metric-mitigation interaction rather than
+      either mitigation being fundamentally weaker: masked conditioning edits a <em>padded</em> crop
+      (target box plus a 32px margin, deliberately included so the model has enough surrounding context
+      to produce a coherent edit), but the Drift Score only excludes the raw target box from scoring —
+      so masked conditioning's own padding ring is counted as drift even when nothing objectionable
+      happened there. Region-locking's hard revert has no equivalent margin. This should not be read as
+      proof that region-locking produces better-<em>looking</em> edits in general — the visual
+      spot-check found region-locking has its own artifact (a visible, unblended rectangular seam near
+      the glove in the worst-case example), consistent with the boundary-cost intuition behind the
+      original H2, just not showing up as a <em>drift-score</em> cost the way the hypothesis predicted.
+    </p>
+
+    <h3 class="sub-title">5.3 A shared weak point: target-region identification</h3>
+    <p>
+      Both mitigations, and the Drift Score itself, depend on CLIP correctly identifying which region an
+      instruction targets. This works reliably for "change X" and "remove X" instructions, where the
+      target already exists in the pre-edit image. It does not work reliably for "add X" instructions,
+      where nothing pre-existing can match well. Tracing one concrete failure directly: for the
+      instruction "add a cap on the boy's head" (step 4 of the worst-case chain), the identified target
+      box covered <strong>99.6% of the frame</strong> — meaning masked conditioning's spatial constraint
+      provided no real protection for that step, since it was cropping to almost the entire image anyway.
+      Region-locking faced the identical oversized box for the same step and happened to produce a fine
+      result, most likely because diffusion sampling is stochastic (no fixed seed) — the two mitigations'
+      generation calls on that step were independent random draws from the same model, and one landed
+      conservative while the other did not. This is a real, reproducible limitation of the
+      target-identification approach, not a bug in either mitigation's implementation, and it affects
+      roughly half of the object-level chains' instructions (those with "add" verbs).
+    </p>
+  </section>
+
+  <section id="sec6">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Limitations</h2></div>
+    <ul>
+      <li><strong>Dataset size</strong> (60 images, 120 chains) is adequate for the paired statistical
+        tests reported here but should be read as an initial empirical study, not a definitive
+        benchmark.</li>
+      <li><strong>Single editor model.</strong> All results are specific to InstructPix2Pix. The Drift
+        Score is designed to be model-agnostic, but that design goal was not empirically tested against
+        a second editor within this project's scope.</li>
+      <li><strong>CLIP similarity is an imperfect proxy for human-perceived change.</strong> A
+        human-perceptual sanity check was built (an interactive rating task over 15 stratified chains)
+        but was not carried out — this was an explicitly optional step and was skipped by choice under
+        time constraints. Its absence means the CLIP-based drift numbers in this report carry that
+        caveat without an independent check against human judgment.</li>
+      <li><strong>Target-region identification via CLIP top-1 similarity is a known weak point for
+        "add" instructions</strong> (§5.3), affecting both the metric's accuracy and both mitigations'
+        effectiveness for that instruction type specifically.</li>
+      <li><strong>Region boxes, not exact segmentation masks</strong>, are used throughout for both
+        scoring and mitigation, for consistency and simplicity. This is a coarser spatial unit than
+        SAM's actual per-pixel masks and is the direct cause of masked conditioning's padding-margin
+        effect discussed in §5.2.</li>
+      <li><strong>The attention-restricted editing mitigation</strong> (stretch goal) was not
+        implemented, per the original scoping — RQ3 has a clear answer without it.</li>
+    </ul>
+  </section>
+
+  <section id="sec7">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">Ethical Considerations</h2></div>
+    <p>
+      All base images are drawn from COCO val2017, licensed for research use. No images were selected
+      for or found to depict identifiable individuals in a way that editing could plausibly harm; several
+      chains do edit photographs containing people (e.g., changing clothing color, adding accessories),
+      and no instruction was written to generate misleading or harmful depictions. The (unused)
+      human-evaluation tool was designed to collect only numeric ratings and an optional rater name, with
+      no other personal data.
+    </p>
+  </section>
+
+  <section id="sec8">
+    <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">Conclusion &amp; Future Work</h2></div>
+    <p>
+      This project set out to answer whether unintended drift across a chain of instruction-based image
+      edits could be measured automatically, whether it compounds, and whether cheap mitigations reduce
+      it. RQ1 and RQ3 have clear, positive, and statistically well-supported answers: yes, and yes, by a
+      wide margin. RQ2's answer is more interesting than a simple yes or no — the data suggests drift may
+      be front-loaded into occasional catastrophic failures rather than gradually compounding, which the
+      Drift Score as built cannot fully distinguish from "no compounding at all." Two specific,
+      well-diagnosed mechanisms — a measurement ceiling effect and a metric/mitigation margin mismatch —
+      explain why two of the original hypotheses reversed rather than simply failing to replicate, which
+      is itself evidence the underlying measurement is capturing something real and interpretable rather
+      than noise.
+    </p>
+    <p>
+      Natural next steps: evaluate the Drift Score against a second, more recent editing model to test
+      its claimed model-agnosticism; run the built human-perceptual check to validate CLIP-based drift
+      against human judgment; and investigate a drift metric less prone to the ceiling effect identified
+      in §5.1, to separate "drift compounds gradually" from "drift arrives suddenly and then plateaus."
+    </p>
+  </section>
+
+  <section id="refs">
+    <div class="sec-head"><h2 class="sec-title">References</h2></div>
+    <div class="refs">
+      <p>Brooks, T., Holynski, A., &amp; Efros, A. A. (2023). <em>InstructPix2Pix: Learning to Follow Image Editing Instructions.</em> CVPR 2023.</p>
+      <p>Cao, M., Wang, X., Qi, Z., Shan, Y., Qie, X., &amp; Zheng, Y. (2023). <em>MasaCtrl: Tuning-Free Mutual Self-Attention Control for Consistent Image Synthesis and Editing.</em> ICCV 2023.</p>
+      <p>Hertz, A., Mokady, R., Tenenbaum, J., Aberman, K., Pritch, Y., &amp; Cohen-Or, D. (2022). <em>Prompt-to-Prompt Image Editing with Cross Attention Control.</em> arXiv:2208.01626.</p>
+      <p>Kirillov, A., Mintun, E., Ravi, N., et al. (2023). <em>Segment Anything.</em> ICCV 2023.</p>
+      <p>Radford, A., Kim, J. W., Hallacy, C., et al. (2021). <em>Learning Transferable Visual Models From Natural Language Supervision.</em> ICML 2021.</p>
+      <p>Rombach, R., Blattmann, A., Lorenz, D., Esser, P., &amp; Ommer, B. (2022). <em>High-Resolution Image Synthesis with Latent Diffusion Models.</em> CVPR 2022.</p>
+      <p>Tumanyan, N., Geyer, M., Bagon, S., &amp; Dekel, T. (2023). <em>Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation.</em> CVPR 2023.</p>
+      <p>Zhang, K., Mo, L., Chen, W., Sun, H., &amp; Su, Y. (2023). <em>MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing.</em> NeurIPS 2023, Datasets and Benchmarks Track.</p>
+    </div>
+  </section>
+
+  <footer>30-day independent research project · pretrained models only, no training</footer>
+</div>

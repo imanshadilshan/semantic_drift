@@ -29,7 +29,7 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 
 - **Day 24-25 — Human perceptual check**: built as an interactive Artifact page (not a spreadsheet) — 15 chains stratified across the drift score range, each showing the original photo plus baseline and region_locking edits blind-labeled A/B, with a 1-5 unintended-change rating per edit. Published: https://claude.ai/code/artifact/67558a09-516d-42c3-a783-e3e7eaf18ebb. **Decided to skip sending it out** — this was always optional per Section 10 of the proposal. The tool stays built in case there's time later; the write-up proceeds without human-validation data, with that limitation stated plainly rather than hedged. See `Implementation/PROGRESS.md` for build detail.
 
-- **Day 26-28 — Write-up**: [`Final Paper/semantic_drift_report.md`](Final%20Paper/semantic_drift_report.md) drafted — Abstract through Conclusion, all headline numbers re-verified against the currently-committed CSVs immediately before writing (not reused from earlier notes), both hypothesis reversals explained mechanistically rather than left as unexplained anomalies.
+- **Day 26-28 — Write-up**: [`Final Paper/semantic_drift_report.md`](Final%20Paper/semantic_drift_report.md) drafted — Abstract through Conclusion, all headline numbers re-verified against the currently-committed CSVs immediately before writing (not reused from earlier notes), both hypothesis reversals explained mechanistically rather than left as unexplained anomalies. Also published as a designed page with embedded before/after images: https://claude.ai/code/artifact/2eca549e-0e1f-4b2c-af07-7bb8d8ab0cbe
 
 ## Next
 - **Day 29**: internal review pass — check every claim in the write-up traces to a specific result file; tighten writing.
