@@ -4,7 +4,7 @@ Overall status for the semantic-drift research project. Following the 30-day tim
 [`Research Proposal/research_proposal_semantic_drift.md`](Research%20Proposal/research_proposal_semantic_drift.md) (Section 8), worked in order rather than jumping straight to code.
 For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation/PROGRESS.md).
 
-## Status: Days 1-23 complete; Day 24-25 human-eval built but skipped by choice; ready for Day 26-28 write-up
+## Status: Days 1-25 complete (human eval built, skipped by choice); Day 26-28 full write-up drafted
 
 ## Done
 - **Repo structure**: `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/` (gitignored PDFs), `Implementation/`, `Final Paper/`.
@@ -29,8 +29,11 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 
 - **Day 24-25 — Human perceptual check**: built as an interactive Artifact page (not a spreadsheet) — 15 chains stratified across the drift score range, each showing the original photo plus baseline and region_locking edits blind-labeled A/B, with a 1-5 unintended-change rating per edit. Published: https://claude.ai/code/artifact/67558a09-516d-42c3-a783-e3e7eaf18ebb. **Decided to skip sending it out** — this was always optional per Section 10 of the proposal. The tool stays built in case there's time later; the write-up proceeds without human-validation data, with that limitation stated plainly rather than hedged. See `Implementation/PROGRESS.md` for build detail.
 
+- **Day 26-28 — Write-up**: [`Final Paper/semantic_drift_report.md`](Final%20Paper/semantic_drift_report.md) drafted — Abstract through Conclusion, all headline numbers re-verified against the currently-committed CSVs immediately before writing (not reused from earlier notes), both hypothesis reversals explained mechanistically rather than left as unexplained anomalies.
+
 ## Next
-- **Day 26-28**: full write-up — literature review, dataset, baseline + 2 mitigations, and real (if partly unexpected) answers to RQ1-RQ3 are all in place. No human-validation data (skipped by choice).
+- **Day 29**: internal review pass — check every claim in the write-up traces to a specific result file; tighten writing.
+- **Day 30**: final polish, proofreading, presentation/defense slides.
 
 ## Blockers
 - None.

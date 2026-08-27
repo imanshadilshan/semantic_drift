@@ -1,6 +1,6 @@
 # Progress
 
-## Status: Days 1-23 complete; Day 24-25 (optional human eval) built but skipped by choice; ready for Day 26-28 write-up
+## Status: Days 1-25 complete (human eval built, skipped by choice); Day 26-28 full write-up drafted
 
 ## Done
 - Repo scaffolding: folder structure under `Implementation/` (src, tests, data, configs, notebooks, results, human_eval).
@@ -53,9 +53,12 @@
   - Published: https://claude.ai/code/artifact/67558a09-516d-42c3-a783-e3e7eaf18ebb — share this link with 3-5 peers, collect their downloaded `human_eval_<name>.json` files into `human_eval/`.
   - **Skipped by choice, not abandoned**: decided not to send this out to peers. The tool stays built and published (link above still works) in case there's time for it later, but the write-up proceeds without human-validation data. This is explicitly allowed for — Section 10 of the proposal already frames it as optional ("if time allows") and separately flags CLIP-based similarity as an imperfect proxy for human-perceived change; without this check, that limitation should be stated a bit more plainly in the write-up rather than hedged, since there's now no human data to lean on as a partial mitigation.
 
+- **Day 26-28 — Write-up**: `../Final Paper/semantic_drift_report.md` drafted — Abstract, Introduction, Related Work, Methodology, Results (with the Table 1 headline numbers), Discussion (H1/H2 reversals explained mechanistically, the "add instruction" target-identification weak point traced to its exact 99.6%-of-frame box), Limitations (including the skipped human eval, stated plainly), Ethical Considerations, Conclusion & Future Work, References. All numbers re-pulled fresh from the currently-committed CSVs immediately before writing (89.1%/68.6% reductions, hero-example 0.565→0.076/0.180, 13/480 skipped baseline steps) rather than reused from earlier PROGRESS.md notes, to avoid citing a stale intermediate figure.
+
 ## Next
 - **Day 20-21** (stretch, optional): attention-restricted editing — skip without risk to the core deliverable if time is tight, per the proposal's own scoping. Given H2 already has a clear, statistically-grounded answer without it, low priority.
-- **Day 26-28**: full write-up. Everything needed is now in place: literature review, dataset, baseline + 2 mitigations scored, and real statistical answers to RQ1-RQ3 (including two hypotheses that didn't pan out as predicted). No human-validation data — see the limitation note above.
+- **Day 29**: internal review pass — check every claim in the write-up traces to a specific result file; tighten writing.
+- **Day 30**: final polish, proofreading, presentation/defense slides.
 
 ## Decisions / notes
 - Implementation code lives in `Implementation/` (sibling to `Research Proposal/`, `Literature Review/`, `Research Papers - Existing/`, `Final Paper/`), not at the repo root.
