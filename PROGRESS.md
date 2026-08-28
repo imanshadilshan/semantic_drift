@@ -40,9 +40,12 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
   - Re-fit the substantially expanded paper back to exactly 6 pages: shrank all 6 figures further, tightened Conclusion/Acknowledgment/Limitations prose, removed one exploratory table in favor of inline prose. Clean from-scratch `pdflatex` rebuild verified: 6 pages, zero errors, zero warnings, no undefined references, no em dashes anywhere in the text.
   - **Deliberately not done**: double-blind anonymization (the review suggested it, but removing the real name/affiliation would contradict the user's earlier explicit choice to publish under their real identity — left as an open question for the user rather than decided unilaterally). Human validation of the Drift Score against the built-but-unsent rating tool also remains outstanding, honestly stated as a limitation rather than glossed over.
 
+- **Day 30 — Defense slides**: `Final Paper/scripts/make_slides.py` (python-pptx) generates `Final Paper/semantic_drift_defense_slides.pptx`, a 17-slide editable deck — title, motivation, RQs, related-work gap, methodology (Drift Score, dataset, mitigations, Edit Adherence Score), results (RQ1 validation, RQ3 effectiveness table + chart, adherence trade-off, RQ2 compounding chart), discussion (both hypothesis reversals with their mechanisms), limitations, conclusion, future work, thank-you. Reuses the same committed figures and numbers as the paper — no new claims. Could not visually render the deck in this environment (no PowerPoint/LibreOffice available for headless export), so verified it by (a) a manual geometry audit of every shape's coordinates against the 13.333x7.5in canvas, catching and fixing two real box/table overlaps on the results slides, and (b) reloading the saved file with python-pptx to confirm it isn't corrupted. Worth a quick visual skim once opened locally before presenting.
+
 ## Next
+- Open `Final Paper/semantic_drift_defense_slides.pptx` locally and skim for layout issues the automated audit couldn't catch (font rendering, image cropping).
 - Decide whether to anonymize the paper for the review process (open question, not yet raised with the user as of this log entry).
-- **Day 30**: final polish, proofreading, presentation/defense slides.
+- Rehearse the defense timing against the slide count (17 slides).
 
 ## Blockers
 - None.
