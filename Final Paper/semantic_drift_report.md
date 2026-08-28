@@ -8,7 +8,7 @@ Instruction-based image editors such as InstructPix2Pix let users apply a sequen
 
 Iterative refinement — "make it sunset," then "add a bird," then "remove the fence" — is a natural usage pattern for instruction-based image editors, but it introduces a failure mode that single-step evaluation cannot see: a model can follow every individual instruction correctly while still drifting further and further from the user's actual intent, because nothing constrains it to leave the rest of the image alone. Existing evaluation protocols for these models (CLIP-based instruction-following scores, human preference studies) measure whether the requested change happened, not what else changed as a side effect. This project terms that side effect **semantic drift** and asks three questions: can it be measured automatically (RQ1), does it compound across a chain of edits (RQ2), and can cheap, pretrained-model-only mitigations reduce it (RQ3)?
 
-This work was scoped for a single contributor on a 30-day timeline using only pretrained models and free-tier compute (a laptop for development/analysis, Google Colab's free GPU for inference) — see Section 6 of the original proposal for the full environment rationale. No model was trained or fine-tuned; the contribution is the measurement methodology and the empirical findings it produces, not a new editing model.
+This work uses only pretrained models: a laptop for development and analysis, and Google Colab for the heavier inference stages. No model was trained or fine-tuned; the contribution is the measurement methodology and the empirical findings it produces, not a new editing model.
 
 ## 2. Related Work
 
@@ -29,7 +29,7 @@ This project builds on five established lines of work, detailed further in the s
 
 For a single edit step, given the pre-edit image, the post-edit image, and the instruction:
 
-1. Segment the **pre-edit** image with SAM (`vit_b` checkpoint, `points_per_side=16`, `min_mask_region_area=500` — kept modest to fit free-tier Colab memory/time budgets), producing a set of region bounding boxes.
+1. Segment the **pre-edit** image with SAM (`vit_b` checkpoint, `points_per_side=16`, `min_mask_region_area=500`, kept modest to fit Colab memory/time budgets), producing a set of region bounding boxes.
 2. Identify the **target region** — the one box the instruction most plausibly refers to — by embedding each region crop and the instruction text with CLIP (`clip-vit-base-patch32`) and taking the highest cosine similarity.
 3. Crop **both** the pre- and post-edit image at the *same* box coordinates for every non-target region. (Segmenting the post-edit image independently, rather than reusing the pre-edit boxes, would give unrelated region IDs with no correspondence between them — this was a deliberate design decision, not an oversight.)
 4. For each non-target region, compute `1 − cosine_similarity(CLIP(pre_crop), CLIP(post_crop))`. The mean over all non-target regions is that step's Drift Score.
@@ -54,7 +54,7 @@ This produced 120 chains total (60 object-level + 60 global), stored in `Impleme
 | Segmentation | SAM `vit_b` (~375MB) | Region decomposition for scoring and mitigation |
 | Embedding | CLIP `ViT-B/32` | Region change measurement + target identification |
 
-All three are pretrained, publicly available checkpoints, downloaded automatically on first use — no training occurred. Heavy inference (editing, segmentation) ran on Google Colab's free/paid GPU tier; drift-score aggregation and statistical analysis ran locally on CPU. Every image, edit chain, and score is committed to the project's git history for reproducibility.
+All three are pretrained, publicly available checkpoints, downloaded automatically on first use — no training occurred. Heavy inference (editing, segmentation) ran on Google Colab's GPU; drift-score aggregation and statistical analysis ran locally on CPU. Every image, edit chain, and score is committed to the project's git history for reproducibility.
 
 ### 3.4 Mitigation Strategies
 

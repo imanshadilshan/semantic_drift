@@ -31,7 +31,7 @@ Sixty images were sampled from COCO val2017 (seed 42, reproducible), filtered to
 \item \textbf{Chain A (object-level)}: four localized, single-object edits, for example changing a horse's color and removing an obstacle in front of it.
 \item \textbf{Chain B (global)}: four broad, scene-level edits, for example making a scene rainy and adding sunset lighting.
 \end{itemize}
-This produced 120 chains in total: 60 object-level and 60 global, each four instructions long. Across all 480 instructions, the leading verb splits as change (108), add (114), remove (60), and global or stylistic phrasing such as ``make'' or ``turn'' (198, e.g. ``make it rainy''), written by a single author rather than crowd-sourced, which the discussion returns to as a source of potential bias.
+This produced 120 chains in total: 60 object-level and 60 global, each four instructions long. Across all 480 instructions, the leading verb splits as change (108), add (114), remove (60), and global or stylistic phrasing such as ``make'' or ``turn'' (198, e.g. ``make it rainy''), hand-written rather than crowd-sourced, which the discussion returns to as a source of potential bias.
 
 \subsection{Pipeline and Models}
 \begin{table}[H]
@@ -50,7 +50,7 @@ Embedding & CLIP (ViT-B/32) & Change measurement, targeting \\
 \bottomrule
 \end{tabular}
 \end{table}
-No model was trained or fine-tuned. Heavy inference, editing and segmentation, ran on a free-tier Colab GPU; drift-score aggregation and statistical analysis ran locally on CPU.
+No model was trained or fine-tuned. Heavy inference, editing and segmentation, ran on a Colab GPU; drift-score aggregation and statistical analysis ran locally on CPU.
 
 \subsection{Mitigation Strategies}
 Two strategies were implemented, both identifying the target region through the identical SAM-plus-CLIP procedure the Drift Score itself uses, so that measurement and mitigation agree on what counts as the target. They were chosen to sit at two different points on the same intervention spectrum, one correcting the model's output after the fact and one constraining what the model is given to work with in the first place, so that comparing them says something about \emph{when} intervening is more effective, not just \emph{whether} intervening helps at all.

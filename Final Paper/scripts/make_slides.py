@@ -209,7 +209,7 @@ for tag, color, l1, l2 in rq_data:
               color=MID_GRAY)
     y += Inches(1.7)
 add_text(s, Inches(0.6), Inches(6.75), Inches(12), Inches(0.4),
-          "Scoped for a single contributor, 30 days, pretrained models only, free-tier compute.",
+          "Uses only pretrained models: no training or fine-tuning of any editing model.",
           size=14, italic=True, color=MID_GRAY)
 add_footer(s, 3, TOTAL_SLIDES)
 
