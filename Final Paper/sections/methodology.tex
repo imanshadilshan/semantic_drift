@@ -48,11 +48,11 @@ Embedding & CLIP (ViT-B/32) & Change measurement, targeting \\
 No model was trained or fine-tuned. Heavy inference, editing and segmentation, ran on a free-tier Colab GPU; drift-score aggregation and statistical analysis ran locally on CPU.
 
 \subsection{Mitigation Strategies}
-Two strategies were implemented, both identifying the target region through the identical SAM-plus-CLIP procedure the Drift Score itself uses, so that measurement and mitigation agree on what counts as the target.
+Two strategies were implemented, both identifying the target region through the identical SAM-plus-CLIP procedure the Drift Score itself uses, so that measurement and mitigation agree on what counts as the target. They were chosen to sit at two different points on the same intervention spectrum, one correcting the model's output after the fact and one constraining what the model is given to work with in the first place, so that comparing them says something about \emph{when} intervening is more effective, not just \emph{whether} intervening helps at all.
 
 \textbf{Region-locking} runs the edit on the full image as usual, then reverts every pixel outside the target region's box back to the pre-edit image. This is a correction applied after generation.
 
-\textbf{Masked conditioning} crops the image down to just the target region, with a 32-pixel padding margin included for surrounding context, before generation. The edit is applied only to that crop, and the result is pasted back into the full frame. The model never sees the rest of the image, which makes this a constraint applied at generation time rather than afterward.
+\textbf{Masked conditioning} crops the image down to just the target region, with a 32-pixel padding margin included for surrounding context, before generation. The margin exists because a crop tight to the target box alone tends to strip away the visual context InstructPix2Pix needs to render a coherent edit, at the cost, examined in Section~V-B, of extending what counts as ``touched'' slightly beyond the target box itself. The edit is applied only to that crop, and the result is pasted back into the full frame. The model never sees the rest of the image, which makes this a constraint applied at generation time rather than afterward.
 
 A third strategy considered during scoping, attention-restricted editing informed by Prompt-to-Prompt-style cross-attention control, was treated as optional and was not implemented, since RQ3 already has a clear, statistically supported answer without it.
 

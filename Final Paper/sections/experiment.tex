@@ -5,7 +5,36 @@
 All 120 chains were run three times: once unmitigated (baseline), once with region-locking active at every step, and once with masked conditioning active at every step. Each run produced five images per chain, the original plus one output per instruction, all committed alongside their Drift Scores for reproducibility. The baseline chain outputs also served as the pre-edit input for the corresponding mitigated chains at each step, so all three conditions edit from the same starting point at every stage.
 
 \subsection{RQ1: Validating the Drift Score}
-Before trusting the score at scale, chains spanning the full score range were inspected by eye. The lowest-scoring baseline chain (0.082, a surfer riding a wave) shows only the requested outfit and surfboard color changes; the wave, spray, and sky are the same scene, pixel for pixel, outside those two objects. The highest-scoring baseline chain (0.565, a boy holding a baseball glove) is a genuine catastrophic failure: by the third step the image has collapsed to near-total black after the second edit destroyed the original composition, and the fourth instruction is applied on top of the wreckage (Fig.~\ref{fig:qualitative}, second panel). The score correctly identifies this as the single worst chain in the dataset, which is the kind of agreement between the metric and visible content that a purely numerical validation cannot substitute for.
+Before trusting the score at scale, chains spanning the full score range were inspected by eye. The lowest-scoring baseline chain (0.082, a surfer riding a wave, Fig.~\ref{fig:surfer}) shows only the requested outfit and surfboard color changes; the wave, spray, and sky are the same scene, pixel for pixel, outside those two objects, exactly the behavior a near-zero score should describe.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.58\columnwidth]{fig5_surfer_example.png}}
+\caption{Lowest-scoring baseline chain. Only the outfit and surfboard color change; the wave, spray, and sky are unaffected.}
+\label{fig:surfer}
+\end{figure}
+
+The highest-scoring baseline chain (0.565, a boy holding a baseball glove) is a genuine catastrophic failure, and its per-step trajectory (Table~\ref{tab:trajectory}) is informative in its own right: drift climbs sharply from 0.074 at step 1 to 0.213 at step 2, then to 0.278 at step 3, at which point the image has collapsed to near-total black after the second edit destroyed the original composition. Step 4 could not be scored at all, since too little of the image remained for SAM to find a usable set of regions once the target was excluded, so the reported cumulative 0.565 is actually a sum of only three measurable steps, not four; the true drift is plausibly higher still. The fourth instruction was still applied on top of the wreckage (Fig.~\ref{fig:qualitative}, second panel). The score correctly identifies this chain as the single worst in the dataset, which is the kind of agreement between the metric and visible content that a purely numerical validation cannot substitute for.
+
+\begin{table}[H]
+\caption{Per-Step Drift, Flagship Chain (Baseball Glove)}
+\label{tab:trajectory}
+\centering
+\renewcommand{\arraystretch}{1.05}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Condition & Step 1 & Step 2 & Step 3 & Step 4 \\
+\midrule
+Baseline             & 0.074 & 0.213 & 0.278 & n/a\textsuperscript{a} \\
+Region-Locking       & 0.006 & 0.004 & 0.000 & 0.066 \\
+Masked Conditioning  & 0.018 & 0.002 & 0.029 & 0.132 \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+\raggedright\footnotesize\textsuperscript{a}Unscoreable; excluded from the reported cumulative total.
+\end{table}
+
+Both mitigations keep steps 1 through 3 close to zero, confirming they suppress drift throughout the chain, not only on average. Both also spike at step 4, the ``add a cap'' instruction, for the reason traced in Section~V-C: an oversized target box leaves neither mitigation with a meaningful constraint on that specific step.
 
 \subsection{RQ3: Mitigation Effectiveness}
 Both mitigations reduce mean cumulative drift by a wide margin relative to the unmitigated baseline (Table~\ref{tab:results}, Fig.~\ref{fig:bycondition}), and the reduction is significant well beyond conventional thresholds in every breakdown tested.
