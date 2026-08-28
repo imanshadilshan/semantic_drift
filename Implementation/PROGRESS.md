@@ -1,6 +1,6 @@
 # Progress
 
-## Status: Days 1-25 complete (human eval built, skipped by choice); Day 26-28 full write-up drafted
+## Status: Days 1-25 complete (human eval built, skipped by choice); Day 26-28 full write-up drafted; Day 29 peer-review revision round
 
 ## Done
 - Repo scaffolding: folder structure under `Implementation/` (src, tests, data, configs, notebooks, results, human_eval).
@@ -56,9 +56,12 @@
 - **Day 26-28 — Write-up**: `../Final Paper/semantic_drift_report.md` drafted — Abstract, Introduction, Related Work, Methodology, Results (with the Table 1 headline numbers), Discussion (H1/H2 reversals explained mechanistically, the "add instruction" target-identification weak point traced to its exact 99.6%-of-frame box), Limitations (including the skipped human eval, stated plainly), Ethical Considerations, Conclusion & Future Work, References. All numbers re-pulled fresh from the currently-committed CSVs immediately before writing (89.1%/68.6% reductions, hero-example 0.565→0.076/0.180, 13/480 skipped baseline steps) rather than reused from earlier PROGRESS.md notes, to avoid citing a stale intermediate figure.
   - Also published as a designed page (not just the markdown): `scripts/report_template.html` + `scripts/build_report_page.py` combine the full write-up with 6 embedded example images (the surfer low-drift example, and the baseball-glove chain across all 3 conditions — original, baseline collapse, region-locking recovery, masked-conditioning partial recovery), status pills marking each RQ/H as supported or reversed, and a headline stat strip. Published: https://claude.ai/code/artifact/2eca549e-0e1f-4b2c-af07-7bb8d8ab0cbe
 
+- **Day 29 — Edit Adherence Score** (peer-review response): `scripts/compute_edit_adherence.py` written and run locally (CPU only — whole-image CLIP embedding, no SAM call, so no new Colab run was needed). For each of the 120 chains, embeds the final image under all three conditions plus the original pre-edit image, and compares each to the final instruction's text with CLIP cosine similarity. Answers a question the Drift Score can't: does suppressing unintended change come at the cost of the requested edit no longer happening? Results in `results/edit_adherence.csv` (360 rows).
+  - **Real cost, but a smaller one than the benefit**: both mitigations significantly reduce whole-image CLIP alignment with the final instruction relative to baseline (region-locking 0.217 vs. baseline 0.245, $d_z=-0.68$; masked conditioning 0.225, $d_z=-0.51$; both $p<0.0001$, Wilcoxon). Effect sizes for this cost (0.51-0.68) are under half the size of the effect sizes for the matching drift reduction (1.73-2.68), so the trade-off still favors both mitigations, but it is a real, quantified trade-off rather than a free win — directly answers the "is 89.1% partly circular" concern from the simulated blind review.
+  - Also computed the instruction-verb taxonomy from `data/edit_instructions.json` for the same review round: change 108, add 114, remove 60, global/stylistic ("make"/"turn" etc.) 198 of 480 total — noted in the paper as a potential bias source (single-author instructions, not crowd-sourced).
+
 ## Next
 - **Day 20-21** (stretch, optional): attention-restricted editing — skip without risk to the core deliverable if time is tight, per the proposal's own scoping. Given H2 already has a clear, statistically-grounded answer without it, low priority.
-- **Day 29**: internal review pass — check every claim in the write-up traces to a specific result file; tighten writing.
 - **Day 30**: final polish, proofreading, presentation/defense slides.
 
 ## Decisions / notes

@@ -3,7 +3,7 @@
 The pipeline realizes a Segment $\rightarrow$ Identify $\rightarrow$ Edit $\rightarrow$ Score cycle at every step of a chain (Fig.~\ref{fig:pipeline}), repeated once per instruction.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=0.92\columnwidth]{fig1_pipeline.png}}
+\centerline{\includegraphics[width=0.68\columnwidth]{fig1_pipeline.png}}
 \caption{Per-step pipeline. The mitigation branch is absent for the unmitigated baseline and active for the two mitigation strategies.}
 \label{fig:pipeline}
 \end{figure}
@@ -19,7 +19,11 @@ and the per-step Drift Score is the mean of $d_r$ over all non-target regions. A
 D_{\text{chain}} = \sum_{t=1}^{T} \frac{1}{|R_t|}\sum_{r \in R_t} d_{r,t}
 \label{eq:chain}
 \end{equation}
-where $R_t$ is the set of non-target regions at step $t$ and $T$ is the chain length. Higher values indicate more unintended change accumulated across the chain.
+where $R_t$ is the set of non-target regions at step $t$ and $T$ is the chain length. Higher values indicate more unintended change accumulated across the chain. Because region-locking is defined using the same target-box exclusion the Drift Score itself uses, a low Drift Score for region-locking could in principle reflect that shared definition rather than a genuinely better edit; Section~\ref{sec:adherence} introduces a second, independent metric specifically to check this.
+
+\subsection{Edit Adherence Score}
+\label{sec:adherence}
+Low unintended change is only a meaningful result if the requested edit still happened. For each chain's final image, the Edit Adherence Score is the whole-image CLIP cosine similarity between that image and the final instruction's text, computed identically for all three conditions and requiring no region segmentation, so it cannot inherit the target-box definition the Drift Score and region-locking share. Reported alongside it is the same score computed against the original, pre-chain image, to show whether editing increased alignment with the instruction at all.
 
 \subsection{Dataset}
 Sixty images were sampled from COCO val2017 (seed 42, reproducible), filtered to those with two to eight annotated objects, enough to guarantee both a plausible target region and several non-target regions without an overly cluttered scene. Every image was inspected individually and given two hand-written, per-image instruction chains rather than instructions drawn from a fixed template pool:
@@ -27,13 +31,14 @@ Sixty images were sampled from COCO val2017 (seed 42, reproducible), filtered to
 \item \textbf{Chain A (object-level)}: four localized, single-object edits, for example changing a horse's color and removing an obstacle in front of it.
 \item \textbf{Chain B (global)}: four broad, scene-level edits, for example making a scene rainy and adding sunset lighting.
 \end{itemize}
-This produced 120 chains in total: 60 object-level and 60 global, each four instructions long.
+This produced 120 chains in total: 60 object-level and 60 global, each four instructions long. Across all 480 instructions, the leading verb splits as change (108), add (114), remove (60), and global or stylistic phrasing such as ``make'' or ``turn'' (198, e.g. ``make it rainy''), written by a single author rather than crowd-sourced, which the discussion returns to as a source of potential bias.
 
 \subsection{Pipeline and Models}
 \begin{table}[H]
 \caption{Models Used, All Pretrained and Publicly Available}
 \label{tab:models}
 \centering
+\small
 \renewcommand{\arraystretch}{1.0}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -57,4 +62,4 @@ Two strategies were implemented, both identifying the target region through the 
 A third strategy considered during scoping, attention-restricted editing informed by Prompt-to-Prompt-style cross-attention control, was treated as optional and was not implemented, since RQ3 already has a clear, statistically supported answer without it.
 
 \subsection{Statistical Analysis}
-Paired $t$-tests and Wilcoxon signed-rank tests compare cumulative Drift Scores between conditions, paired by image identity and chain type. The Wilcoxon test is treated as the primary result given the small, likely skewed sample; the $t$-test is reported alongside it for completeness. Of 480 baseline edit steps, 13 (2.7\%) could not be scored, because SAM occasionally finds too few regions in a heavily stylized pre-edit image for anything to remain once the target region is excluded. These were dropped from pairwise comparisons rather than imputed.
+Paired $t$-tests and Wilcoxon signed-rank tests compare cumulative Drift Scores and Edit Adherence Scores between conditions, paired by image identity and chain type, with matched-pairs rank-biserial correlation and Cohen's $d_z$ reported as effect sizes. The Wilcoxon test is treated as the primary result given the small, likely skewed sample; the $t$-test is reported alongside it for completeness. The three RQ3 condition-level comparisons (Table~\ref{tab:results}) are the paper's primary, confirmatory tests and remain significant after Holm-Bonferroni correction; the chain-type, step-position, and instruction-type breakdowns are exploratory and are reported uncorrected. Of 480 baseline edit steps, 13 (2.7\%) could not be scored, because SAM occasionally finds too few regions in a heavily stylized pre-edit image for anything to remain once the target region is excluded; these were dropped from pairwise comparisons rather than imputed, and a chain's cumulative score is only comparable to another's when both have the same number of scorable steps, which Table~\ref{tab:trajectory} reports explicitly rather than masking with an unqualified total.
