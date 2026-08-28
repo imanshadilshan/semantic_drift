@@ -42,6 +42,8 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 
 - **Day 30 — Defense slides**: `Final Paper/scripts/make_slides.py` (python-pptx) generates `Final Paper/semantic_drift_defense_slides.pptx`, a 17-slide editable deck — title, motivation, RQs, related-work gap, methodology (Drift Score, dataset, mitigations, Edit Adherence Score), results (RQ1 validation, RQ3 effectiveness table + chart, adherence trade-off, RQ2 compounding chart), discussion (both hypothesis reversals with their mechanisms), limitations, conclusion, future work, thank-you. Reuses the same committed figures and numbers as the paper — no new claims. Could not visually render the deck in this environment (no PowerPoint/LibreOffice available for headless export), so verified it by (a) a manual geometry audit of every shape's coordinates against the 13.333x7.5in canvas, catching and fixing two real box/table overlaps on the results slides, and (b) reloading the saved file with python-pptx to confirm it isn't corrupted. Worth a quick visual skim once opened locally before presenting.
 
+- **Word version**: `Final Paper/semantic_drift_paper.docx`, converted via Pandoc from `Final Paper/semantic_drift_paper.md` (single-column, same content, tables, figures, and numbered references as the compiled PDF). Regenerate after any paper edit by updating the `.md` and re-running Pandoc.
+
 ## Next
 - Open `Final Paper/semantic_drift_defense_slides.pptx` locally and skim for layout issues the automated audit couldn't catch (font rendering, image cropping).
 - Decide whether to anonymize the paper for the review process (open question, not yet raised with the user as of this log entry).
