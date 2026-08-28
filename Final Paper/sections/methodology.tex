@@ -1,0 +1,60 @@
+\vspace{-4pt}
+\section{Methodology}
+The pipeline realizes a Segment $\rightarrow$ Identify $\rightarrow$ Edit $\rightarrow$ Score cycle at every step of a chain (Fig.~\ref{fig:pipeline}), repeated once per instruction.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig1_pipeline.png}}
+\caption{Per-step pipeline. The mitigation branch is absent for the unmitigated baseline and active for the two mitigation strategies.}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{The Drift Score}
+Given a pre-edit image, a post-edit image, and the instruction that produced it, the pre-edit image is first segmented into regions with SAM, and each region is cropped from both the pre- and post-edit image at the \emph{same} coordinates. Segmenting the post-edit image independently would yield unrelated region identifiers with no correspondence between the two images, so the same box set is deliberately reused. The target region, the one box the instruction most plausibly refers to, is identified by embedding every region crop and the instruction text with CLIP and taking the highest cosine similarity. For every non-target region $r$, the per-region drift is
+\begin{equation}
+d_r = 1 - \cos\big(\text{CLIP}(x_r^{\text{pre}}),\ \text{CLIP}(x_r^{\text{post}})\big)
+\label{eq:region}
+\end{equation}
+and the per-step Drift Score is the mean of $d_r$ over all non-target regions. A chain's cumulative Drift Score is the sum of its per-step scores:
+\begin{equation}
+D_{\text{chain}} = \sum_{t=1}^{T} \frac{1}{|R_t|}\sum_{r \in R_t} d_{r,t}
+\label{eq:chain}
+\end{equation}
+where $R_t$ is the set of non-target regions at step $t$ and $T$ is the chain length. Higher values indicate more unintended change accumulated across the chain.
+
+\subsection{Dataset}
+Sixty images were sampled from COCO val2017 (seed 42, reproducible), filtered to those with two to eight annotated objects, enough to guarantee both a plausible target region and several non-target regions without an overly cluttered scene. Every image was inspected individually and given two hand-written, per-image instruction chains rather than instructions drawn from a fixed template pool:
+\begin{itemize}[itemsep=1pt,topsep=2pt,parsep=0pt,leftmargin=*]
+\item \textbf{Chain A (object-level)}: four localized, single-object edits, for example changing a horse's color and removing an obstacle in front of it.
+\item \textbf{Chain B (global)}: four broad, scene-level edits, for example making a scene rainy and adding sunset lighting.
+\end{itemize}
+This produced 120 chains in total: 60 object-level and 60 global, each four instructions long.
+
+\subsection{Pipeline and Models}
+\begin{table}[H]
+\caption{Models Used, All Pretrained and Publicly Available}
+\label{tab:models}
+\centering
+\renewcommand{\arraystretch}{1.0}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Component & Model & Role \\
+\midrule
+Editor & InstructPix2Pix & Executes each edit, 512$\times$512 \\
+Segmentation & SAM (ViT-B) & Region decomposition \\
+Embedding & CLIP (ViT-B/32) & Change measurement, targeting \\
+\bottomrule
+\end{tabular}
+\end{table}
+No model was trained or fine-tuned. Heavy inference, editing and segmentation, ran on a free-tier Colab GPU; drift-score aggregation and statistical analysis ran locally on CPU.
+
+\subsection{Mitigation Strategies}
+Two strategies were implemented, both identifying the target region through the identical SAM-plus-CLIP procedure the Drift Score itself uses, so that measurement and mitigation agree on what counts as the target.
+
+\textbf{Region-locking} runs the edit on the full image as usual, then reverts every pixel outside the target region's box back to the pre-edit image. This is a correction applied after generation.
+
+\textbf{Masked conditioning} crops the image down to just the target region, with a 32-pixel padding margin included for surrounding context, before generation. The edit is applied only to that crop, and the result is pasted back into the full frame. The model never sees the rest of the image, which makes this a constraint applied at generation time rather than afterward.
+
+A third strategy considered during scoping, attention-restricted editing informed by Prompt-to-Prompt-style cross-attention control, was treated as optional and was not implemented, since RQ3 already has a clear, statistically supported answer without it.
+
+\subsection{Statistical Analysis}
+Paired $t$-tests and Wilcoxon signed-rank tests compare cumulative Drift Scores between conditions, paired by image identity and chain type. The Wilcoxon test is treated as the primary result given the small, likely skewed sample; the $t$-test is reported alongside it for completeness. Of 480 baseline edit steps, 13 (2.7\%) could not be scored, because SAM occasionally finds too few regions in a heavily stylized pre-edit image for anything to remain once the target region is excluded. These were dropped from pairwise comparisons rather than imputed.

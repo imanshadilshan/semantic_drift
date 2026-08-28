@@ -1,0 +1,67 @@
+\vspace{-6pt}
+\section{Experiment and Evaluation}
+
+\subsection{Experimental Setup}
+All 120 chains were run three times: once unmitigated (baseline), once with region-locking active at every step, and once with masked conditioning active at every step. Each run produced five images per chain, the original plus one output per instruction, all committed alongside their Drift Scores for reproducibility. The baseline chain outputs also served as the pre-edit input for the corresponding mitigated chains at each step, so all three conditions edit from the same starting point at every stage.
+
+\subsection{RQ1: Validating the Drift Score}
+Before trusting the score at scale, chains spanning the full score range were inspected by eye. The lowest-scoring baseline chain (0.082, a surfer riding a wave) shows only the requested outfit and surfboard color changes; the wave, spray, and sky are the same scene, pixel for pixel, outside those two objects. The highest-scoring baseline chain (0.565, a boy holding a baseball glove) is a genuine catastrophic failure: by the third step the image has collapsed to near-total black after the second edit destroyed the original composition, and the fourth instruction is applied on top of the wreckage (Fig.~\ref{fig:qualitative}, second panel). The score correctly identifies this as the single worst chain in the dataset, which is the kind of agreement between the metric and visible content that a purely numerical validation cannot substitute for.
+
+\subsection{RQ3: Mitigation Effectiveness}
+Both mitigations reduce mean cumulative drift by a wide margin relative to the unmitigated baseline (Table~\ref{tab:results}, Fig.~\ref{fig:bycondition}), and the reduction is significant well beyond conventional thresholds in every breakdown tested.
+
+\begin{table}[H]
+\caption{Cumulative Drift Score by Condition ($n=120$)}
+\label{tab:results}
+\centering
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Condition & Mean & Reduction & Wilcoxon $p$ \\
+\midrule
+Baseline             & 0.293 & --    & --       \\
+Masked Conditioning  & 0.092 & 68.6\% & $<0.0001$ \\
+Region-Locking       & 0.032 & 89.1\% & $<0.0001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.85\columnwidth]{fig2_drift_by_condition.png}}
+\caption{Mean cumulative Drift Score by condition. Error bars omitted; both reductions are significant at $p<0.0001$ by paired $t$-test and Wilcoxon signed-rank test.}
+\label{fig:bycondition}
+\end{figure}
+
+Region-locking also outperforms masked conditioning directly, in a head-to-head paired comparison ($p<0.0001$). Broken down by chain type (Table~\ref{tab:bytype}), both mitigations perform slightly better on global chains than on object-level chains, though both remain highly significant in each subgroup, suggesting the target-identification weak point discussed in Section~V-C, which is specific to object-adding instructions, affects object-level chains more than global ones. On the worst-case chain from Section~IV-B, baseline cumulative drift of 0.565 falls to 0.076 under region-locking and 0.180 under masked conditioning, both large, visually confirmed recoveries (Fig.~\ref{fig:qualitative}).
+
+\begin{table}[H]
+\caption{Drift Reduction by Chain Type ($n=60$ per cell)}
+\label{tab:bytype}
+\centering
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Chain Type & Condition & Reduction & Wilcoxon $p$ \\
+\midrule
+Object-Level & Masked Conditioning & 62.5\% & $<0.0001$ \\
+Object-Level & Region-Locking      & 86.0\% & $<0.0001$ \\
+Global       & Masked Conditioning & 74.8\% & $<0.0001$ \\
+Global       & Region-Locking      & 92.2\% & $<0.0001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig3_qualitative_example.png}}
+\caption{The worst-case baseline chain (baseball glove) under all three conditions. The baseline collapses to near-black; region-locking recovers the scene almost exactly, with one visible seam artifact near the glove; masked conditioning recovers the scene for three of four steps but produces an unrelated image on the final ``add a cap'' instruction (Section~V-A).}
+\label{fig:qualitative}
+\end{figure}
+
+\subsection{RQ2: Compounding Across the Chain}
+No single consecutive step transition is statistically significant (step 1 to 2: $p=0.85$; 2 to 3: $p=0.33$; 3 to 4: $p=0.47$), meaning there is no detectable escalation at any individual point in the chain (Fig.~\ref{fig:bystep}). Comparing the two endpoints directly, step 1 versus step 4 is significant ($p=0.012$ by $t$-test, $p=0.006$ by Wilcoxon), but with step 4 showing \emph{less} drift (mean 0.066) than step 1 (mean 0.080), the reverse of the predicted direction.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.85\columnwidth]{fig4_step_position.png}}
+\caption{Mean baseline Drift Score by chain position. The step 1 to step 4 difference is significant ($p=0.012$); no individual step-to-step transition is.}
+\label{fig:bystep}
+\end{figure}
