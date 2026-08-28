@@ -34,7 +34,7 @@ Masked Conditioning  & 0.018 & 0.002 & 0.029 & 0.132 \\
 \raggedright\footnotesize\textsuperscript{a}Unscoreable; excluded from the reported cumulative total.
 \end{table}
 
-Both mitigations keep steps 1 through 3 close to zero, confirming they suppress drift throughout the chain, not only on average. Both also spike at step 4, the ``add a cap'' instruction, for the reason traced in Section~V-C: an oversized target box leaves neither mitigation with a meaningful constraint on that specific step.
+Both mitigations keep steps 1 through 3 close to zero, confirming they suppress drift throughout the chain, not only on average. Both also spike at step 4, the ``add a cap'' instruction, for the reason traced in Section~IV-C: an oversized target box leaves neither mitigation with a meaningful constraint on that specific step.
 
 \subsection{RQ3: Mitigation Effectiveness}
 Both mitigations reduce mean cumulative drift by a wide margin relative to the unmitigated baseline (Table~\ref{tab:results}, Fig.~\ref{fig:bycondition}), and the reduction is significant well beyond conventional thresholds in every breakdown tested.
@@ -61,7 +61,7 @@ Region-Locking       & 0.032 & 89.1\% & $<0.0001$ \\
 \label{fig:bycondition}
 \end{figure}
 
-Region-locking also outperforms masked conditioning directly, in a head-to-head paired comparison ($p<0.0001$). Broken down by chain type (Table~\ref{tab:bytype}), both mitigations perform slightly better on global chains than on object-level chains, though both remain highly significant in each subgroup, suggesting the target-identification weak point discussed in Section~V-C, which is specific to object-adding instructions, affects object-level chains more than global ones. On the worst-case chain from Section~IV-B, baseline cumulative drift of 0.565 falls to 0.076 under region-locking and 0.180 under masked conditioning, both large, visually confirmed recoveries (Fig.~\ref{fig:qualitative}).
+Region-locking also outperforms masked conditioning directly, in a head-to-head paired comparison ($p<0.0001$). Broken down by chain type (Table~\ref{tab:bytype}), both mitigations perform slightly better on global chains than on object-level chains, though both remain highly significant in each subgroup, suggesting the target-identification weak point discussed in Section~IV-C, which is specific to object-adding instructions, affects object-level chains more than global ones. On the worst-case chain from Section~III-B, baseline cumulative drift of 0.565 falls to 0.076 under region-locking and 0.180 under masked conditioning, both large, visually confirmed recoveries (Fig.~\ref{fig:qualitative}).
 
 \begin{table}[H]
 \caption{Drift Reduction by Chain Type ($n=60$ per cell)}
@@ -81,8 +81,8 @@ Global       & Region-Locking      & 92.2\% & $<0.0001$ \\
 \end{table}
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{fig3_qualitative_example.png}}
-\caption{The worst-case baseline chain (baseball glove) under all three conditions. The baseline collapses to near-black; region-locking recovers the scene almost exactly, with one visible seam artifact near the glove; masked conditioning recovers the scene for three of four steps but produces an unrelated image on the final ``add a cap'' instruction (Section~V-A).}
+\centerline{\includegraphics[width=0.9\columnwidth]{fig3_qualitative_example.png}}
+\caption{The worst-case baseline chain (baseball glove) under all three conditions. The baseline collapses to near-black; region-locking recovers the scene almost exactly, with one visible seam artifact near the glove; masked conditioning recovers the scene for three of four steps but produces an unrelated image on the final ``add a cap'' instruction (Section~IV-A).}
 \label{fig:qualitative}
 \end{figure}
 

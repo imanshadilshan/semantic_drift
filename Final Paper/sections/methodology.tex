@@ -3,7 +3,7 @@
 The pipeline realizes a Segment $\rightarrow$ Identify $\rightarrow$ Edit $\rightarrow$ Score cycle at every step of a chain (Fig.~\ref{fig:pipeline}), repeated once per instruction.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics[width=\columnwidth]{fig1_pipeline.png}}
+\centerline{\includegraphics[width=0.92\columnwidth]{fig1_pipeline.png}}
 \caption{Per-step pipeline. The mitigation branch is absent for the unmitigated baseline and active for the two mitigation strategies.}
 \label{fig:pipeline}
 \end{figure}
@@ -52,7 +52,7 @@ Two strategies were implemented, both identifying the target region through the 
 
 \textbf{Region-locking} runs the edit on the full image as usual, then reverts every pixel outside the target region's box back to the pre-edit image. This is a correction applied after generation.
 
-\textbf{Masked conditioning} crops the image down to just the target region, with a 32-pixel padding margin included for surrounding context, before generation. The margin exists because a crop tight to the target box alone tends to strip away the visual context InstructPix2Pix needs to render a coherent edit, at the cost, examined in Section~V-B, of extending what counts as ``touched'' slightly beyond the target box itself. The edit is applied only to that crop, and the result is pasted back into the full frame. The model never sees the rest of the image, which makes this a constraint applied at generation time rather than afterward.
+\textbf{Masked conditioning} crops the image down to just the target region, with a 32-pixel padding margin included for surrounding context, before generation. The margin exists because a crop tight to the target box alone tends to strip away the visual context InstructPix2Pix needs to render a coherent edit, at the cost, examined in Section~IV-B, of extending what counts as ``touched'' slightly beyond the target box itself. The edit is applied only to that crop, and the result is pasted back into the full frame. The model never sees the rest of the image, which makes this a constraint applied at generation time rather than afterward.
 
 A third strategy considered during scoping, attention-restricted editing informed by Prompt-to-Prompt-style cross-attention control, was treated as optional and was not implemented, since RQ3 already has a clear, statistically supported answer without it.
 
