@@ -2,7 +2,7 @@
 
 **R. W. V. Imansha Dilshan**
 Software Engineering Teaching Unit
-University of Kelaniya
+*University of Kelaniya*
 imansha.idr@gmail.com
 
 ## Abstract
