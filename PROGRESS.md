@@ -44,9 +44,11 @@ For code-session-level detail, see [`Implementation/PROGRESS.md`](Implementation
 
 - **Word version**: `Final Paper/semantic_drift_paper.docx`, converted via Pandoc from `Final Paper/semantic_drift_paper.md` (single-column, same content, tables, figures, and numbered references as the compiled PDF). Regenerate after any paper edit by updating the `.md` and re-running Pandoc.
 
+- **ICATC 2026 submission compliance**: the conference's formatting check flagged identity info and non-A4 page size as blockers (deadline 9 Oct 2026). Audited the paper against all four stated requirements: page count (6, within the 4-6 range) and IEEE template (`IEEEtran` conference class) already passed; identity info in the title block and US Letter page size did not. Fixed by adding `Final Paper/submission/` as a separate anonymized, A4 copy rather than touching the real paper: `submission/main.tex` adds the `a4paper` class option and swaps in `config/title_anonymous.tex` ("Anonymous Author(s)" / "Affiliation withheld for blind review"), while reusing the real `sections/`, `bibliography/`, `figures/`, and `config/preamble.tex` via relative paths, so the two versions can never drift apart silently. Confirmed via `pdfinfo`: 6 pages, 595x842pt (A4). Grepped all section/config/bibliography files plus the compiled PDF's metadata for the author's name, affiliation, and email to confirm no leaks outside the title block.
+
 ## Next
+- Submit `Final Paper/submission/main.pdf` for ICATC 2026 before 9 Oct 2026; the real-identity version (`Final Paper/main.pdf`) stays as the repo/portfolio copy.
 - Open `Final Paper/semantic_drift_defense_slides.pptx` locally and skim for layout issues the automated audit couldn't catch (font rendering, image cropping).
-- Decide whether to anonymize the paper for the review process (open question, not yet raised with the user as of this log entry).
 - Rehearse the defense timing against the slide count (17 slides).
 
 ## Blockers
