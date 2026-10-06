@@ -1,5 +1,13 @@
 \documentclass[conference,a4paper]{IEEEtran}
 \IEEEoverridecommandlockouts
+% IEEEtran's conference mode hardcodes \textheight for US Letter and only
+% widens the bottom margin on A4 (A4 is ~0.69in taller than Letter), leaving
+% a large blank gap at the foot of every page. Reclaim that space as usable
+% text height instead, using the same top margin the class would otherwise use.
+\textheight 9.95in
+\IEEEsettopmargin{t}{0.75in}
+\IEEEquantizetextheight{c}
+\IEEEsettopmargin{q}{0sp}
 \input{../config/preamble}
 \usepackage{stfloats}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
